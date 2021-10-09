@@ -1,0 +1,15 @@
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\bin\Debug\net5.0\HotelMgt.Models.deps.json
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\bin\Debug\net5.0\HotelMgt.Models.runtimeconfig.json
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\bin\Debug\net5.0\HotelMgt.Models.runtimeconfig.dev.json
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\bin\Debug\net5.0\HotelMgt.Models.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\bin\Debug\net5.0\ref\HotelMgt.Models.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\bin\Debug\net5.0\HotelMgt.Models.pdb
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.AssemblyInfoInputs.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.AssemblyInfo.cs
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.csproj.CoreCompileInputs.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\ref\HotelMgt.Models.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.pdb
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.genruntimeconfig.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.csproj.AssemblyReference.cache

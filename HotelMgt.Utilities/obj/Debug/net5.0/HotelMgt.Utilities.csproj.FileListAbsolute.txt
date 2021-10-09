@@ -1,0 +1,16 @@
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\bin\Debug\net5.0\HotelMgt.Utilities.deps.json
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\bin\Debug\net5.0\HotelMgt.Utilities.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\bin\Debug\net5.0\ref\HotelMgt.Utilities.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\bin\Debug\net5.0\HotelMgt.Utilities.pdb
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\obj\Debug\net5.0\HotelMgt.Utilities.csproj.AssemblyReference.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\obj\Debug\net5.0\HotelMgt.Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\obj\Debug\net5.0\HotelMgt.Utilities.AssemblyInfoInputs.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\obj\Debug\net5.0\HotelMgt.Utilities.AssemblyInfo.cs
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\obj\Debug\net5.0\HotelMgt.Utilities.csproj.CoreCompileInputs.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\obj\Debug\net5.0\HotelMgt.Utilities.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\obj\Debug\net5.0\ref\HotelMgt.Utilities.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\obj\Debug\net5.0\HotelMgt.Utilities.pdb
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\bin\Debug\net5.0\HotelMgt.Dtos.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\bin\Debug\net5.0\HotelMgt.Models.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\bin\Debug\net5.0\HotelMgt.Dtos.pdb
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Utilities\bin\Debug\net5.0\HotelMgt.Models.pdb

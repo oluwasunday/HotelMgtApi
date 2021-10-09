@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelMgt.API", "HotelMgt.API\HotelMgt.API.csproj", "{4A3AA72F-6DBC-4815-ABC7-BF17DCA79030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelMgt.Core", "HotelMgt.Core\HotelMgt.Core.csproj", "{5F29CE4A-0A8F-4588-9D4A-B5CB1BD83395}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelMgt.Models", "HotelMgt.Models\HotelMgt.Models.csproj", "{817504E2-9537-4D8D-BEBC-B73AFB773441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelMgt.Data", "HotelMgt.Data\HotelMgt.Data.csproj", "{C6439F57-1E45-4A89-A521-C195749A820D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelMgt.Dtos", "HotelMgt.Dtos\HotelMgt.Dtos.csproj", "{288BDBAD-E7EE-417B-91A4-B374F57D5201}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelMgt.Utilities", "HotelMgt.Utilities\HotelMgt.Utilities.csproj", "{56855778-4900-4652-A8B9-9F638EED1D2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelMgt.Tests", "HotelMgt.Tests\HotelMgt.Tests.csproj", "{B79FFEF6-13FC-48F7-9633-3AEAE8E97CAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A3AA72F-6DBC-4815-ABC7-BF17DCA79030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3AA72F-6DBC-4815-ABC7-BF17DCA79030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3AA72F-6DBC-4815-ABC7-BF17DCA79030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3AA72F-6DBC-4815-ABC7-BF17DCA79030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F29CE4A-0A8F-4588-9D4A-B5CB1BD83395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F29CE4A-0A8F-4588-9D4A-B5CB1BD83395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F29CE4A-0A8F-4588-9D4A-B5CB1BD83395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F29CE4A-0A8F-4588-9D4A-B5CB1BD83395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{817504E2-9537-4D8D-BEBC-B73AFB773441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817504E2-9537-4D8D-BEBC-B73AFB773441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817504E2-9537-4D8D-BEBC-B73AFB773441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817504E2-9537-4D8D-BEBC-B73AFB773441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6439F57-1E45-4A89-A521-C195749A820D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6439F57-1E45-4A89-A521-C195749A820D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6439F57-1E45-4A89-A521-C195749A820D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6439F57-1E45-4A89-A521-C195749A820D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{288BDBAD-E7EE-417B-91A4-B374F57D5201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{288BDBAD-E7EE-417B-91A4-B374F57D5201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{288BDBAD-E7EE-417B-91A4-B374F57D5201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{288BDBAD-E7EE-417B-91A4-B374F57D5201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56855778-4900-4652-A8B9-9F638EED1D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56855778-4900-4652-A8B9-9F638EED1D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56855778-4900-4652-A8B9-9F638EED1D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56855778-4900-4652-A8B9-9F638EED1D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B79FFEF6-13FC-48F7-9633-3AEAE8E97CAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B79FFEF6-13FC-48F7-9633-3AEAE8E97CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B79FFEF6-13FC-48F7-9633-3AEAE8E97CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B79FFEF6-13FC-48F7-9633-3AEAE8E97CAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16EDE842-ADFF-41AF-94C6-DA2829031939}
+	EndGlobalSection
+EndGlobal
