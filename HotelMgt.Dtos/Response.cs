@@ -8,6 +8,19 @@ namespace HotelMgt.Dtos
         public bool Succeeded { get; set; }
         public string Message { get; set; }
         public int StatusCode { get; set; }
+        public string Errors { get; set; }
+
+        public Response(int statusCode, bool success, string msg, T data, string errors)
+        {
+            Data = data;
+            Succeeded = success;
+            StatusCode = statusCode;
+            Message = msg;
+            Errors = errors;
+        }
+        public Response()
+        {
+        }
 
         /// <summary>
         /// Sets the data to the appropriate response

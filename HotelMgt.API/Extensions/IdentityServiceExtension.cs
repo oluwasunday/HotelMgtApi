@@ -3,7 +3,7 @@ using HotelMgt.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace hotel_booking_api.Extensions
+namespace HotelMgt.API.Extensions
 {
     public static class IdentityServiceExtension
     {

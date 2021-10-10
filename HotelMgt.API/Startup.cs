@@ -1,4 +1,4 @@
-using hotel_booking_api.Extensions;
+using HotelMgt.API.Extensions;
 using HotelMgt.Core;
 using HotelMgt.Core.interfaces;
 using HotelMgt.Core.Utilities;
@@ -19,18 +19,24 @@ namespace HotelMgt.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public static IConfiguration StaticConfig { get; private set; }
+        public IWebHostEnvironment Environment { get; }
+        public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            StaticConfig = configuration;
+            Environment = environment;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
-            // database connection
+            
+            // configure entityframeworkcore with PostgreSQL database connection
             services.AddDbContext<HotelMgtDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConfiguration"))
                 );
@@ -48,6 +54,9 @@ namespace HotelMgt.API
 
             // Configure Identity
             services.ConfigureIdentity();
+
+            // Add JWT Authentication and Authorization
+            services.ConfigureAuthentication();
 
             services.AddMvc();
 

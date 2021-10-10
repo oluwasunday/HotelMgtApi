@@ -12,7 +12,7 @@ namespace HotelMgt.Models
         public bool IsActive { get; set; }
         public string PublicId { get; set; }
         public string Avatar { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; }
         public Customer Customer { get; set; }
     }
