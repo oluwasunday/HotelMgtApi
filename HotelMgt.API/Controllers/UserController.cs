@@ -117,7 +117,8 @@ namespace HotelMgt.API.Controllers
         {
             try
             {
-                //var userId = HttpContext.User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value;
+                // var userId = HttpContext.User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value;
+                // var userId = User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value;
                 return Ok(await _userRepository.UpdateUserAsync(id, appUser));
             }
             catch (ArgumentNullException ex)
