@@ -31,6 +31,9 @@ namespace HotelMgt.API.Extensions
 
             // Add Fluent Validator Injections Here
             services.AddTransient<IValidator<AddCustomerDto>, AddCustomerDtoValidator>();
+
+            // Authentication
+            services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();
         }
     }
 }

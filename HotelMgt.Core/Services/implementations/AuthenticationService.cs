@@ -5,9 +5,11 @@ using HotelMgt.Dtos.AuthenticationDto;
 using HotelMgt.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace HotelMgt.Core.Services.implementations
@@ -16,19 +18,25 @@ namespace HotelMgt.Core.Services.implementations
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
-        //private readonly ITokenGeneratorService _tokenGenerator;
+        private readonly ITokenGeneratorService _tokenGenerator;
         //private readonly IMailService _mailService;
         //private const string FilePath = "../HotelMgtAPI/StaticFiles/";
 
 
-        public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper)
+        public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper, ITokenGeneratorService tokenGenerator)
         {
             _userManager = userManager;
             _mapper = mapper;
-            //_tokenGenerator = tokenGenerator;
+            _tokenGenerator = tokenGenerator;
             //_mailService = mailService;
         }
 
+
+        /// <summary>
+        /// Create user and add to database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<Response<RegisterResponseDto>> RegisterUserAsync(RegisterDto model)
         {
             string errors = "";
@@ -74,6 +82,42 @@ namespace HotelMgt.Core.Services.implementations
                 Errors = errors
             }; ;
         }
+
+
+        public async Task<Response<LoginResponseDto>> LoginUserAsync(LoginDto model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if(user == null)
+                return new Response<LoginResponseDto>()
+                {
+                    StatusCode = StatusCodes.Status400BadRequest,
+                    Succeeded = false,
+                    Message = "No user with the specified email address",
+                    Data = new LoginResponseDto { Id = null, Token = null }
+                };
+
+            var result = await _userManager.CheckPasswordAsync(user, model.Password);
+            if(!result)
+                return new Response<LoginResponseDto>()
+                {
+                    StatusCode = StatusCodes.Status400BadRequest,
+                    Succeeded = false,
+                    Message = "Invalid password",
+                    Data = new LoginResponseDto { Id = null, Token = null }
+                };
+            
+            var token = await _tokenGenerator.GenerateToken(user);
+
+            return new Response<LoginResponseDto>()
+            {
+                StatusCode = StatusCodes.Status200OK,
+                Message = "Login Successful",
+                Succeeded = true,
+                Data = new LoginResponseDto { Id = user.Id, Token = token }
+            };
+        }
+
+
 
         public async Task<Response<string>> ConfirmEmailAsync(ConfirmEmailDto confirmEmailDto)
         {

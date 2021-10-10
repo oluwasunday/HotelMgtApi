@@ -17,6 +17,19 @@ namespace HotelMgt.API.Controllers
             _authenticationService = authenticationService;
         }
 
+        // base-url/Auth/Login
+        [HttpPost]
+        [Route("Login")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> LoginUser([FromBody] LoginDto model)
+        {
+            var result = await _authenticationService.LoginUserAsync(model);
+            return StatusCode(result.StatusCode, result);
+        }
+
 
         // base-url/Auth/Register
         [HttpPost]
@@ -31,5 +44,6 @@ namespace HotelMgt.API.Controllers
             var result = await _authenticationService.RegisterUserAsync(model);
             return StatusCode(result.StatusCode, result);
         }
+
     }
 }

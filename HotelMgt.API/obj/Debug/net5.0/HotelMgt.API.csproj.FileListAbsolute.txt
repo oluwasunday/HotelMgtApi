@@ -76,7 +76,6 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\HotelMgt.Utilities.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\HotelMgt.Utilities.pdb
-C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.csproj.CopyComplete
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\CloudinaryDotNet.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\MailKit.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
