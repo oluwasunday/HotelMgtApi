@@ -15,4 +15,3 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Data\obj\Debug\net5.0
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Data\obj\Debug\net5.0\ref\HotelMgt.Data.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Data\obj\Debug\net5.0\HotelMgt.Data.pdb
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Data\obj\Debug\net5.0\HotelMgt.Data.genruntimeconfig.cache
-C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Data\obj\Debug\net5.0\HotelMgt.Data.csproj.CopyComplete

@@ -10,7 +10,7 @@ using HotelMgt.Dtos.CustomerDtos;
 using HotelMgt.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace hotel_booking_api.Extensions
+namespace HotelMgt.API.Extensions
 {
     public static class ServicesExtension
     {
@@ -27,6 +27,7 @@ namespace hotel_booking_api.Extensions
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IBookingService,  BookingService>();
             services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             // Add Fluent Validator Injections Here
             services.AddTransient<IValidator<AddCustomerDto>, AddCustomerDtoValidator>();
