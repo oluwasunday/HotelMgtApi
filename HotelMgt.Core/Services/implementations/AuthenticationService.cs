@@ -55,6 +55,7 @@ namespace HotelMgt.Core.Services.implementations
 
             user.UserName = model.Email;
             var result = await _userManager.CreateAsync(user, model.Password);
+
             if (result.Succeeded)
             {
                 // TODO: send confirmation email
@@ -70,9 +71,7 @@ namespace HotelMgt.Core.Services.implementations
                 };
             }
 
-            foreach (var err in result.Errors)
-                errors += err + Environment.NewLine;
-
+            errors = GetErrors(result);
             return new Response<RegisterResponseDto>()
             {
                 StatusCode = StatusCodes.Status400BadRequest,
@@ -146,7 +145,7 @@ namespace HotelMgt.Core.Services.implementations
         }
 
         private static string GetErrors(IdentityResult result)
-        {
+        { 
             return result.Errors.Aggregate(string.Empty, (current, err) => current + err.Description + "\n");
         }
     }

@@ -10,5 +10,7 @@ namespace HotelMgt.Models
         public decimal Price { get; set; } 
         public decimal Discount { get; set; } 
         public Customer Customer { get; set; }
+        public string BookingId {  get; set; }
+        public Booking Booking { get; set; }
     }
 }
