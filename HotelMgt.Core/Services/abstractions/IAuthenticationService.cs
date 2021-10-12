@@ -9,5 +9,7 @@ namespace HotelMgt.Core.Services.abstractions
         Task<Response<string>> ConfirmEmailAsync(ConfirmEmailDto confirmEmailDto);
         Task<Response<RegisterResponseDto>> RegisterUserAsync(RegisterDto model);
         Task<Response<LoginResponseDto>> LoginUserAsync(LoginDto model);
+        Task<Response<string>> ForgetPasswordAsync(string email);
+        Task<Response<string>> ResetPasswordAsync(ResetPasswordDto model);
     }
 }

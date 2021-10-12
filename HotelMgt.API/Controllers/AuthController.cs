@@ -70,22 +70,51 @@ namespace HotelMgt.API.Controllers
         }
 
         // base-url/Auth/confirmemail
-        [HttpPost]
+        [HttpGet]
         [Route("confirmemail")]
         [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEMail(string email, string token)
+        public async Task<IActionResult> ConfirmEmail(string email, string token)
         {
             try
             {
                 var confirmEmail = new ConfirmEmailDto { Token = token, Email = email };
                 var result = await _authenticationService.ConfirmEmailAsync(confirmEmail);
-                return Redirect($"{_configuration["AppUrl"]}/confirmEmail.html");
+                return Redirect($"{_configuration["AppUrl"]}confirmemail.html");
             }
             catch (Exception ex)
             {
                 return BadRequest(new[] { ex.Message, ex.StackTrace });
             }
+        }
 
+        // base-url/Auth/forget-password
+        [HttpPost]
+        [Route("forget-password")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Manager")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ForgetPassword(string email)
+        {
+            var result = await _authenticationService.ForgetPasswordAsync(email);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        // base-url/Auth/reset-password
+        [HttpPost]
+        [Route("resetpassword")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Manager")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ResetPassword([FromForm]ResetPasswordDto model)
+        {
+            var result = await _authenticationService.ResetPasswordAsync(model);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }
