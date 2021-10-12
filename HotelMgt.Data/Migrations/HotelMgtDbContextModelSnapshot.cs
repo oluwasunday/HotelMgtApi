@@ -24,6 +24,9 @@ namespace HotelMgt.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
+                    b.Property<string>("BookingId")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
 
@@ -43,6 +46,8 @@ namespace HotelMgt.Data.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookingId");
 
                     b.HasIndex("CustomerId");
 
@@ -466,9 +471,15 @@ namespace HotelMgt.Data.Migrations
 
             modelBuilder.Entity("HotelMgt.Models.Amenity", b =>
                 {
+                    b.HasOne("HotelMgt.Models.Booking", "Booking")
+                        .WithMany("Amenities")
+                        .HasForeignKey("BookingId");
+
                     b.HasOne("HotelMgt.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
+
+                    b.Navigation("Booking");
 
                     b.Navigation("Customer");
                 });
@@ -598,6 +609,8 @@ namespace HotelMgt.Data.Migrations
 
             modelBuilder.Entity("HotelMgt.Models.Booking", b =>
                 {
+                    b.Navigation("Amenities");
+
                     b.Navigation("Payment");
 
                     b.Navigation("RoomTypes");

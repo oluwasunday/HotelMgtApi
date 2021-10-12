@@ -5,11 +5,13 @@ using HotelMgt.Dtos.AuthenticationDto;
 using HotelMgt.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HotelMgt.Core.Services.implementations
@@ -19,15 +21,20 @@ namespace HotelMgt.Core.Services.implementations
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
         private readonly ITokenGeneratorService _tokenGenerator;
-        //private readonly IMailService _mailService;
+        private readonly IMailService _mailService;
+        private IConfiguration _configuration;
         //private const string FilePath = "../HotelMgtAPI/StaticFiles/";
 
 
-        public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper, ITokenGeneratorService tokenGenerator)
+        public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper, 
+            ITokenGeneratorService tokenGenerator, IMailService mailService,
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _mapper = mapper;
             _tokenGenerator = tokenGenerator;
+            _mailService = mailService;
+            _configuration = configuration;
             //_mailService = mailService;
         }
 
@@ -61,6 +68,19 @@ namespace HotelMgt.Core.Services.implementations
                 // TODO: send confirmation email
                 await _userManager.AddToRoleAsync(user, "Customer");
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                var encodedEmailToken = Encoding.UTF8.GetBytes(token);
+                var validEmailToken = WebEncoders.Base64UrlEncode(encodedEmailToken);
+
+                string url = $"{_configuration["AppUrl"]}api/v1/auth/confirmemail?userid={user.Id}&token={validEmailToken}";
+                var mailDto = new MailRequestDto { 
+                    ToEmail=user.Email, 
+                    Subject="Confirm your email", 
+                    Body = $"<h2>Welcome to Dominion Koncept</h2>\n<p>Pls confirm your email by <a href='{url}'>clicking here</a></p>", 
+                    Attachments=null};
+
+                await _mailService.SendEmailAsync(mailDto);
+
                 return new Response<RegisterResponseDto>()
                 {
                     StatusCode = StatusCodes.Status201Created,
@@ -129,7 +149,11 @@ namespace HotelMgt.Core.Services.implementations
                 response.StatusCode = (int)HttpStatusCode.NotFound;
                 return response;
             }
-            var result = await _userManager.ConfirmEmailAsync(user, confirmEmailDto.Token);
+
+            var decodedToken = WebEncoders.Base64UrlDecode(confirmEmailDto.Token);
+            var normalToken = Encoding.UTF8.GetString(decodedToken);
+
+            var result = await _userManager.ConfirmEmailAsync(user, normalToken);
             if (result.Succeeded)
             {
                 response.StatusCode = (int)HttpStatusCode.OK;
@@ -138,6 +162,7 @@ namespace HotelMgt.Core.Services.implementations
                 response.Succeeded = true;
                 return response;
             }
+
             response.StatusCode = (int)HttpStatusCode.BadRequest;
             response.Message = GetErrors(result);
             response.Succeeded = false;

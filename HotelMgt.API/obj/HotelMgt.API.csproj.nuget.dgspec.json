@@ -191,6 +191,9 @@
               },
               "C:\\Users\\hp\\OneDrive\\Documents\\Portfolio\\HotelMgt\\HotelMgt.Dtos\\HotelMgt.Dtos.csproj": {
                 "projectPath": "C:\\Users\\hp\\OneDrive\\Documents\\Portfolio\\HotelMgt\\HotelMgt.Dtos\\HotelMgt.Dtos.csproj"
+              },
+              "C:\\Users\\hp\\OneDrive\\Documents\\Portfolio\\HotelMgt\\HotelMgt.Utilities\\HotelMgt.Utilities.csproj": {
+                "projectPath": "C:\\Users\\hp\\OneDrive\\Documents\\Portfolio\\HotelMgt\\HotelMgt.Utilities\\HotelMgt.Utilities.csproj"
               }
             }
           }
@@ -451,6 +454,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"

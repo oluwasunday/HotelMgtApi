@@ -32,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HotelMgt.Data\HotelMgt.Data.csproj" />
     <ProjectReference Include="..\HotelMgt.Dtos\HotelMgt.Dtos.csproj" />
+    <ProjectReference Include="..\HotelMgt.Utilities\HotelMgt.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

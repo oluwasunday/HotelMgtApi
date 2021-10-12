@@ -89,3 +89,4 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\NETCore.MailKit.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.csproj.CopyComplete

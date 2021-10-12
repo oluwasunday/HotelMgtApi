@@ -8,6 +8,7 @@ using HotelMgt.Core.UnitOfWork.abstractions;
 using HotelMgt.Core.UnitOfWork.implementations;
 using HotelMgt.Dtos.CustomerDtos;
 using HotelMgt.Utilities;
+using HotelMgt.Utilities.Settings;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HotelMgt.API.Extensions
@@ -34,6 +35,8 @@ namespace HotelMgt.API.Extensions
 
             // Authentication
             services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();
+
+            
         }
     }
 }

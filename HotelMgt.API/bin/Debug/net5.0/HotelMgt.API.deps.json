@@ -1906,6 +1906,7 @@
           "CloudinaryDotNet": "1.15.2",
           "HotelMgt.Data": "1.0.0",
           "HotelMgt.Dtos": "1.0.0",
+          "HotelMgt.Utilities": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.10",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
@@ -1951,6 +1952,7 @@
       },
       "HotelMgt.Dtos/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.10",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
