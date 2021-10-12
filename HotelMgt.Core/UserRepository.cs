@@ -26,7 +26,7 @@ namespace HotelMgt.Core
 
 
         public async Task<AddUserResponseDto> AddUserAsync(AddUserDto user)
-        {
+        { 
             AppUser appUser = _mapper.Map<AppUser>(user);
 
             if (appUser == null)
