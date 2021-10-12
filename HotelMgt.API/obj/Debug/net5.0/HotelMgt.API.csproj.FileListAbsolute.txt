@@ -90,3 +90,13 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.csproj.CopyComplete
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\HotelMgt.API.Views.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\HotelMgt.API.Views.pdb
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.RazorAssemblyInfo.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.RazorAssemblyInfo.cs
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.TagHelpers.input.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.TagHelpers.output.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.RazorCoreGenerate.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\Razor\Pages\ResetPassword.cshtml.g.cs
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.RazorTargetAssemblyInfo.cs
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.Views.pdb

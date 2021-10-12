@@ -79,6 +79,8 @@ namespace HotelMgt.API
 
             // Configure dependency injection
             services.AddDependencyInjection();
+
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,6 +108,7 @@ namespace HotelMgt.API
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
         }
