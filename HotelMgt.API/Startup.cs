@@ -1,10 +1,13 @@
 using HotelMgt.API.Extensions;
 using HotelMgt.Core;
 using HotelMgt.Core.interfaces;
+using HotelMgt.Core.Services.abstractions;
+using HotelMgt.Core.Services.implementations;
 using HotelMgt.Core.Utilities;
 using HotelMgt.Data;
 using HotelMgt.Data.Seeder;
 using HotelMgt.Models;
+using HotelMgt.Utilities.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -41,6 +44,10 @@ namespace HotelMgt.API
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConfiguration"))
                 );
 
+            // configure mail service
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, MailService>();
+
             services.AddControllers(setupAction => {
                 setupAction.ReturnHttpNotAcceptable = true;
             }).AddXmlDataContractSerializerFormatters(); // to support XML media type
@@ -48,6 +55,13 @@ namespace HotelMgt.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HotelMgt.API", Version = "v1" });
+            });
+
+
+            // configure CORS for mail service
+            services.AddCors(cors =>
+            {
+                cors.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
 
             
@@ -81,6 +95,8 @@ namespace HotelMgt.API
             HotelMgtSeeder.SeedData(dbContext, userManager, roleManager).Wait();
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 

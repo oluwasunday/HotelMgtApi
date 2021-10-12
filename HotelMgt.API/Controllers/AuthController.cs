@@ -3,6 +3,8 @@ using HotelMgt.Dtos.AuthenticationDto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.Threading.Tasks;
 
 namespace HotelMgt.API.Controllers
@@ -12,9 +14,13 @@ namespace HotelMgt.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthenticationService _authenticationService;
-        public AuthController(IAuthenticationService authenticationService)
+        private readonly IMailService _mailService;
+        private IConfiguration _configuration;
+        public AuthController(IAuthenticationService authenticationService, IMailService mailService, IConfiguration configuration)
         {
             _authenticationService = authenticationService;
+            _mailService = mailService;
+            _configuration = configuration;
         }
 
         // base-url/Auth/Login
@@ -45,5 +51,41 @@ namespace HotelMgt.API.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
+        // base-url/Auth/sendmail
+        [HttpPost]
+        [Route("send-mail")]
+        [AllowAnonymous]
+        public async Task<IActionResult> SendMail([FromForm] MailRequestDto model)
+        {
+            try
+            {
+                var result = await _mailService.SendEmailAsync(model);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new[] { ex.Message, ex.StackTrace });
+            }
+            
+        }
+
+        // base-url/Auth/confirmemail
+        [HttpPost]
+        [Route("confirmemail")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEMail(string email, string token)
+        {
+            try
+            {
+                var confirmEmail = new ConfirmEmailDto { Token = token, Email = email };
+                var result = await _authenticationService.ConfirmEmailAsync(confirmEmail);
+                return Redirect($"{_configuration["AppUrl"]}/confirmEmail.html");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new[] { ex.Message, ex.StackTrace });
+            }
+
+        }
     }
 }
