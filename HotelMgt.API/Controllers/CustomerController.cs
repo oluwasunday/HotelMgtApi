@@ -25,6 +25,7 @@ namespace HotelMgt.API.Controllers
         }
 
         [HttpGet("id")]
+        [Authorize]
         //[Authorize(Roles = "Manager, Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -38,6 +39,7 @@ namespace HotelMgt.API.Controllers
 
         [HttpGet]
         [Route("customers")]
+        [Authorize]
         //[Authorize(Roles = "Manager, Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
