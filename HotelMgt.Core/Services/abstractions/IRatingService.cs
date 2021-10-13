@@ -9,10 +9,9 @@ namespace HotelMgt.Core.Services.abstractions
     {
         Response<List<AddRatingResponseDto>> GetAllRatings();
         Response<double> GetAllRatingsAverage();
-        //Response<AddRatingResponseDto> GetAllRatingsByCustomerId(string customerId);
-        Response<List<AddRatingResponseDto>> GetAllRatingsByCustomerId(string customerId);
+        Task<Response<List<AddRatingResponseDto>>> GetAllRatingsByCustomerId(string customerId);
         Task<Response<AddRatingResponseDto>> GetRatingById(string id);
-        Response<double> GetRatingsAverageByCustomer(string customerId);
+        Task<Response<double>> GetRatingsAverageByCustomer(string customerId);
         Task<Response<AddRatingResponseDto>> UpdateRating(UpdateRatingDto ratingDto);
     }
 }
