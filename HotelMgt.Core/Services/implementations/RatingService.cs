@@ -41,6 +41,15 @@ namespace HotelMgt.Core.Services.implementations
 
         public async Task<Response<AddRatingResponseDto>> GetRatingById(string id)
         {
+            if(id == null)
+                return new Response<AddRatingResponseDto>
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Succeeded = false,
+                    Data = null,
+                    Message = "Failed"
+                };
+
             var rating = await _unitOfWork.Ratings.GetAsync(id);
             var ratingRespone = _mapper.Map<AddRatingResponseDto>(rating);
 
@@ -53,8 +62,18 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public Response<List<AddRatingResponseDto>> GetAllRatingsByCustomerId(string customerId)
+        public async Task<Response<List<AddRatingResponseDto>>> GetAllRatingsByCustomerId(string customerId)
         {
+            var customer = await _unitOfWork.Customers.GetAsync(customerId);
+            if (customer == null)
+                return new Response<List<AddRatingResponseDto>>
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Succeeded = false,
+                    Data = default,
+                    Message = "Failed, customer not found"
+                };
+
             var rating = _unitOfWork.Ratings.GetRatingByCustomerId(customerId);
             var ratingRespone = _mapper.Map<List<AddRatingResponseDto>>(rating);
 
@@ -80,10 +99,19 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public Response<double> GetRatingsAverageByCustomer(string customerId)
+        public async Task<Response<double>> GetRatingsAverageByCustomer(string customerId)
         {
-            double rating = _unitOfWork.Ratings.GetRatingAverageByCustomer(customerId);
+            var customer = await _unitOfWork.Customers.GetAsync(customerId);
+            if(customer == null)
+                return new Response<double>
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Succeeded = false,
+                    Data = default,
+                    Message = "Failed, customer not found"
+                };
 
+            double rating = _unitOfWork.Ratings.GetRatingAverageByCustomer(customerId);
             return new Response<double>
             {
                 StatusCode = StatusCodes.Status200OK,
