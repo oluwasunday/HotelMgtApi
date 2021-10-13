@@ -52,10 +52,10 @@ namespace HotelMgt.API
                 setupAction.ReturnHttpNotAcceptable = true;
             }).AddXmlDataContractSerializerFormatters(); // to support XML media type
 
-            services.AddSwaggerGen(c =>
+            /*services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HotelMgt.API", Version = "v1" });
-            });
+            });*/
 
 
             // configure CORS for mail service
@@ -64,7 +64,9 @@ namespace HotelMgt.API
                 cors.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
 
-            
+            // configure swagger
+            services.AddSwagger();
+
 
             // Configure Identity
             services.ConfigureIdentity();

@@ -6,9 +6,12 @@ using HotelMgt.Core.Services.abstractions;
 using HotelMgt.Core.Services.implementations;
 using HotelMgt.Core.UnitOfWork.abstractions;
 using HotelMgt.Core.UnitOfWork.implementations;
+using HotelMgt.Dtos.BookingDtos;
 using HotelMgt.Dtos.CustomerDtos;
+using HotelMgt.Dtos.RatingDtos;
 using HotelMgt.Utilities;
 using HotelMgt.Utilities.Settings;
+using HotelMgt.Utilities.Validations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HotelMgt.API.Extensions
@@ -29,14 +32,16 @@ namespace HotelMgt.API.Extensions
             services.AddScoped<IBookingService,  BookingService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IRatingService, RatingService>();
 
             // Add Fluent Validator Injections Here
             services.AddTransient<IValidator<AddCustomerDto>, AddCustomerDtoValidator>();
+            services.AddTransient<IValidator<UpdateRatingDto>, UpdateRatingValidatorDto>();
+            services.AddTransient<IValidator<AddBookingDto>, AddBookingDtoValidator>();
 
             // Authentication
             services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();
 
-            
         }
     }
 }
