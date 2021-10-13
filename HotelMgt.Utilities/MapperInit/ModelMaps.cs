@@ -3,6 +3,7 @@ using HotelMgt.Dtos;
 using HotelMgt.Dtos.AuthenticationDto;
 using HotelMgt.Dtos.BookingDtos;
 using HotelMgt.Dtos.CustomerDtos;
+using HotelMgt.Dtos.RatingDtos;
 using HotelMgt.Dtos.RoomDtos;
 using HotelMgt.Models;
 
@@ -46,6 +47,9 @@ namespace HotelMgt.Core.Utilities
             CreateMap<Room, RoomDto>().ReverseMap();
             CreateMap<Room, AddRoomDto>().ReverseMap();
             CreateMap<AddRoomResponseDto, Room>().ReverseMap();
+
+            // rating mappings
+            CreateMap<AddRatingResponseDto, Rating>().ReverseMap();
         }
     }
 }

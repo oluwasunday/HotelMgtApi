@@ -1,5 +1,6 @@
 ﻿using HotelMgt.Core.Services.abstractions;
 using HotelMgt.Dtos.CustomerDtos;
+using HotelMgt.Dtos.RatingDtos;
 using HotelMgt.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -17,11 +18,14 @@ namespace HotelMgt.API.Controllers
     {
         private readonly ICustomerService _customerService;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IRatingService _ratingService;
 
-        public CustomerController(ICustomerService customerService, UserManager<AppUser> userManager)
+        public CustomerController(ICustomerService customerService, UserManager<AppUser> userManager,
+            IRatingService ratingService)
         {
             _customerService = customerService;
             _userManager = userManager;
+            _ratingService = ratingService;
         }
 
         [HttpGet("id")]
@@ -60,6 +64,80 @@ namespace HotelMgt.API.Controllers
         public async Task<IActionResult> AddCustomer([FromBody]AddCustomerDto customerDto)
         {
             var result = await _customerService.AddCustomer(customerDto);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("ratings")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult AllRatings()
+        {
+            var result = _ratingService.GetAllRatings();
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("ratings/id")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> RatingsByRatingId(string ratingId)
+        {
+            var result = await _ratingService.GetRatingById(ratingId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("{id}/ratings")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult AllRatingsByACustomer(string customerId)
+        {
+            var result = _ratingService.GetAllRatingsByCustomerId(customerId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("ratings/average")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult AllRatingsAverage()
+        {
+            var result = _ratingService.GetAllRatingsAverage();
+            return StatusCode(result.StatusCode, result);
+        }
+
+
+        [HttpGet("{id}/ratings/average")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> RatingsAverageByCustomer()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var result = _ratingService.GetRatingsAverageByCustomer(user.Id);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPut("{id}/ratings/average")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateRating(UpdateRatingDto ratingDto)
+        {
+            var result = await _ratingService.UpdateRating(ratingDto);
             return StatusCode(result.StatusCode, result);
         }
     }
