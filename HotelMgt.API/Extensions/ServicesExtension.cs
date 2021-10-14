@@ -6,6 +6,8 @@ using HotelMgt.Core.Services.abstractions;
 using HotelMgt.Core.Services.implementations;
 using HotelMgt.Core.UnitOfWork.abstractions;
 using HotelMgt.Core.UnitOfWork.implementations;
+using HotelMgt.Dtos.AmenityDtos;
+using HotelMgt.Dtos.AuthenticationDto;
 using HotelMgt.Dtos.BookingDtos;
 using HotelMgt.Dtos.CustomerDtos;
 using HotelMgt.Dtos.RatingDtos;
@@ -13,6 +15,8 @@ using HotelMgt.Dtos.ReviewDtos;
 using HotelMgt.Utilities;
 using HotelMgt.Utilities.Settings;
 using HotelMgt.Utilities.Validations;
+using HotelMgt.Utilities.Validations.AmenityValidators;
+using HotelMgt.Utilities.Validations.AuthenticationValidators;
 using HotelMgt.Utilities.Validations.ReviewValidations;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -36,6 +40,7 @@ namespace HotelMgt.API.Extensions
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IRatingService, RatingService>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IAmenityService, AmenityService>();
 
             // Add Fluent Validator Injections Here
             services.AddTransient<IValidator<AddCustomerDto>, AddCustomerDtoValidator>();
@@ -43,6 +48,11 @@ namespace HotelMgt.API.Extensions
             services.AddTransient<IValidator<AddBookingDto>, AddBookingDtoValidator>();
             services.AddTransient<IValidator<AddReviewDto>, AddReviewDtoValidator>();
             services.AddTransient<IValidator<UpdateReviewDto>, UpdateReviewDtoValidator>();
+            services.AddTransient<IValidator<LoginDto>, LoginValidatorDto>();
+            services.AddTransient<IValidator<RegisterDto>, RegisterDtoValidator>();
+            services.AddTransient<IValidator<ResetPasswordDto>, ResetPasswordValidatorDto>();
+            services.AddTransient<IValidator<AddAmenityDto>, AddAmenityDtoValidator>();
+            services.AddTransient<IValidator<UpdateAmenityDto>, UpdateAmenityDtoValidator>();
 
             // Authentication
             services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();

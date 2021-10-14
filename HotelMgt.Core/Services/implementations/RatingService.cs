@@ -25,11 +25,11 @@ namespace HotelMgt.Core.Services.implementations
             _mapper = mapper;
         }
 
-        public async Task<Response<AddRatingResponseDto>> AddRatings(AddRatingsDto ratingsDto)
+        public async Task<Dtos.Response<AddRatingResponseDto>> AddRatings(AddRatingsDto ratingsDto)
         {
             Customer customer = await _unitOfWork.Customers.GetAsync(ratingsDto.CustomerId);
             if (customer == null)
-                return new Response<AddRatingResponseDto>
+                return new Dtos.Response<AddRatingResponseDto>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -42,7 +42,7 @@ namespace HotelMgt.Core.Services.implementations
             await _unitOfWork.CompleteAsync();
 
             var response = _mapper.Map<AddRatingResponseDto>(rating);
-            return new Response<AddRatingResponseDto>
+            return new Dtos.Response<AddRatingResponseDto>
             {
                 StatusCode = StatusCodes.Status201Created,
                 Succeeded = true,
@@ -51,12 +51,12 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public Response<List<AddRatingResponseDto>> GetAllRatings()
+        public Dtos.Response<List<AddRatingResponseDto>> GetAllRatings()
         {
             var ratings = _unitOfWork.Ratings.GetAll().ToList();
             var ratingRespone = _mapper.Map<List<AddRatingResponseDto>>(ratings);
 
-            return new Response<List<AddRatingResponseDto>>
+            return new Dtos.Response<List<AddRatingResponseDto>>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
@@ -65,10 +65,10 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public async Task<Response<AddRatingResponseDto>> GetRatingById(string id)
+        public async Task<Dtos.Response<AddRatingResponseDto>> GetRatingById(string id)
         {
             if(id == null)
-                return new Response<AddRatingResponseDto>
+                return new Dtos.Response<AddRatingResponseDto>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -78,7 +78,7 @@ namespace HotelMgt.Core.Services.implementations
 
             var rating = await _unitOfWork.Ratings.GetAsync(id);
             if (rating == null)
-                return new Response<AddRatingResponseDto>
+                return new Dtos.Response<AddRatingResponseDto>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -88,7 +88,7 @@ namespace HotelMgt.Core.Services.implementations
 
             var ratingRespone = _mapper.Map<AddRatingResponseDto>(rating);
 
-            return new Response<AddRatingResponseDto>
+            return new Dtos.Response<AddRatingResponseDto>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
@@ -97,11 +97,11 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public async Task<Response<List<AddRatingResponseDto>>> GetAllRatingsByCustomerId(string customerId)
+        public async Task<Dtos.Response<List<AddRatingResponseDto>>> GetAllRatingsByCustomerId(string customerId)
         {
             var customer = await _unitOfWork.Customers.GetAsync(customerId);
             if (customer == null)
-                return new Response<List<AddRatingResponseDto>>
+                return new Dtos.Response<List<AddRatingResponseDto>>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -112,7 +112,7 @@ namespace HotelMgt.Core.Services.implementations
             var rating = _unitOfWork.Ratings.GetRatingByCustomerId(customerId);
             var ratingRespone = _mapper.Map<List<AddRatingResponseDto>>(rating);
 
-            return new Response<List<AddRatingResponseDto>>
+            return new Dtos.Response<List<AddRatingResponseDto>>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
@@ -121,24 +121,24 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public Response<double> GetAllRatingsAverage()
+        public Dtos.Response<double> GetAllRatingsAverage()
         {
             double rating = _unitOfWork.Ratings.GetRatingAverage();
 
-            return new Response<double>
+            return new Dtos.Response<double>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
-                Data =  Math.Round(rating,1),
+                Data = Math.Round(rating, 1),
                 Message = "Success"
             };
         }
 
-        public async Task<Response<double>> GetRatingsAverageByCustomer(string customerId)
+        public async Task<Dtos.Response<double>> GetRatingsAverageByCustomer(string customerId)
         {
             var customer = await _unitOfWork.Customers.GetAsync(customerId);
             if(customer == null)
-                return new Response<double>
+                return new Dtos.Response<double>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -147,20 +147,20 @@ namespace HotelMgt.Core.Services.implementations
                 };
 
             double rating = _unitOfWork.Ratings.GetRatingAverageByCustomer(customerId);
-            return new Response<double>
+            return new Dtos.Response<double>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
-                Data = Math.Round(rating,1),
+                Data = Math.Round(rating, 1),
                 Message = "Success"
             };
         }
 
-        public async Task<Response<AddRatingResponseDto>> UpdateRating(UpdateRatingDto ratingDto)
+        public async Task<Dtos.Response<AddRatingResponseDto>> UpdateRating(UpdateRatingDto ratingDto)
         {
             var rating = await _unitOfWork.Ratings.GetAsync(ratingDto.Id);
             if (rating == null)
-                return new Response<AddRatingResponseDto>
+                return new Dtos.Response<AddRatingResponseDto>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -177,7 +177,7 @@ namespace HotelMgt.Core.Services.implementations
 
             AddRatingResponseDto response = _mapper.Map<AddRatingResponseDto>(result);
 
-            return new Response<AddRatingResponseDto>
+            return new Dtos.Response<AddRatingResponseDto>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HotelMgt.Dtos;
+using HotelMgt.Dtos.AmenityDtos;
 using HotelMgt.Dtos.AuthenticationDto;
 using HotelMgt.Dtos.BookingDtos;
 using HotelMgt.Dtos.CustomerDtos;
@@ -56,6 +57,10 @@ namespace HotelMgt.Core.Utilities
             // review mappings
             CreateMap<AddReviewDto, Review>().ReverseMap();
             CreateMap<AddReviewResponseDto, Review>().ReverseMap();
+
+            // amenity mappings
+            CreateMap<AddAmenityDto, Amenity>().ReverseMap();
+            CreateMap<AddAmenityResponseDto, Amenity>().ReverseMap();
         }
     }
 }
