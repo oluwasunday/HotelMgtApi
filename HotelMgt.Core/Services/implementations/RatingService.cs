@@ -25,6 +25,33 @@ namespace HotelMgt.Core.Services.implementations
             _mapper = mapper;
         }
 
+        public async Task<Response<AddRatingResponseDto>> AddRatings(AddRatingsDto ratingsDto)
+        {
+            Customer customer = await _unitOfWork.Customers.GetAsync(ratingsDto.CustomerId);
+            if (customer == null)
+                return new Response<AddRatingResponseDto>
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Succeeded = false,
+                    Data = null,
+                    Message = "Customer not found"
+                };
+
+            Rating rating = _mapper.Map<Rating>(ratingsDto);
+            await _unitOfWork.Ratings.AddAsync(rating);
+            await _unitOfWork.CompleteAsync();
+
+            var response = _mapper.Map<AddRatingResponseDto>(rating);
+
+            return new Response<AddRatingResponseDto>
+            {
+                StatusCode = StatusCodes.Status201Created,
+                Succeeded = true,
+                Data = response,
+                Message = "Successfully added"
+            };
+        }
+
         public Response<List<AddRatingResponseDto>> GetAllRatings()
         {
             var ratings = _unitOfWork.Ratings.GetAll().ToList();
@@ -135,7 +162,11 @@ namespace HotelMgt.Core.Services.implementations
                 };
             
             rating.Ratings = ratingDto.Ratings;
-            Rating result = await _unitOfWork.Ratings.UpdateRatingAsync(rating);
+            rating.UpdatedAt = DateTime.UtcNow;
+
+            Rating result = _unitOfWork.Ratings.UpdateRatingAsync(rating);
+            await _unitOfWork.CompleteAsync();
+
             AddRatingResponseDto response = _mapper.Map<AddRatingResponseDto>(result);
 
             return new Response<AddRatingResponseDto>

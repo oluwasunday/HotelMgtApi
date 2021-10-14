@@ -102,7 +102,6 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\obj\Debug\net5.0\HotelMgt.Tests.csproj.AssemblyReference.cache
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\obj\Debug\net5.0\HotelMgt.Tests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\obj\Debug\net5.0\HotelMgt.Tests.AssemblyInfoInputs.cache
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\obj\Debug\net5.0\HotelMgt.Tests.AssemblyInfo.cs

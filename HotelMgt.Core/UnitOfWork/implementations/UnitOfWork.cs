@@ -14,6 +14,7 @@ namespace HotelMgt.Core.UnitOfWork.implementations
         public IRoomRepository Rooms { get; private set; }
         public IBookingsRepository Bookings { get; private set; }
         public IRatingRepository Ratings { get; private set; }
+        public IReviewRepository Reviews { get; private set; }
         private readonly HotelMgtDbContext _context;
 
         public UnitOfWork(HotelMgtDbContext context)
@@ -23,6 +24,7 @@ namespace HotelMgt.Core.UnitOfWork.implementations
             Bookings = new BookingsRepository(_context);
             Rooms = new RoomRepository(_context);
             Ratings = new RatingRepository(_context);
+            Reviews = new ReviewRepository(_context);
         }
 
 
