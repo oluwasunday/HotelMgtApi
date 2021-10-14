@@ -24,7 +24,7 @@ namespace HotelMgt.Core.Services.implementations
         }
         
 
-        public async Task<Response<AddBookingDto>> GetBookingAsync(string id)
+        public async Task<Dtos.Response<AddBookingDto>> GetBookingAsync(string id)
         {
             var message = "";
             var booking = await _unitOfWork.Bookings.GetAsync(id);
@@ -32,7 +32,7 @@ namespace HotelMgt.Core.Services.implementations
                 message = "booking not available";
             
             var response = _mapper.Map<AddBookingDto>(booking);
-            return new Response<AddBookingDto>
+            return new Dtos.Response<AddBookingDto>
             {
                 StatusCode = message == "" ? StatusCodes.Status200OK : StatusCodes.Status400BadRequest,
                 Succeeded = message == "" ? true : false,
@@ -41,7 +41,7 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public Response<List<AddBookingDto>> GetAllBookingAsync()
+        public Dtos.Response<List<AddBookingDto>> GetAllBookingAsync()
         {
             var message = "";
             var bookings = _unitOfWork.Bookings.GetAll().ToList();
@@ -50,7 +50,7 @@ namespace HotelMgt.Core.Services.implementations
 
             var response = _mapper.Map<List<AddBookingDto>>(bookings);
 
-            return new Response<List<AddBookingDto>>
+            return new Dtos.Response<List<AddBookingDto>>
             {
                 StatusCode = message == "" ? StatusCodes.Status200OK : StatusCodes.Status400BadRequest,
                 Succeeded = message == "" ? true : false,
@@ -59,7 +59,7 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public async Task<Response<AddBookingResponseDto>> AddBookingAsync(string userId, AddBookingDto bookingDto)
+        public async Task<Dtos.Response<AddBookingResponseDto>> AddBookingAsync(string userId, AddBookingDto bookingDto)
         {
             var booking = _mapper.Map<Booking>(bookingDto);
             booking.Id = Guid.NewGuid().ToString();
@@ -70,7 +70,7 @@ namespace HotelMgt.Core.Services.implementations
             
             var responseDto = _mapper.Map<AddBookingResponseDto>(booking);
 
-            return new Response<AddBookingResponseDto>
+            return new Dtos.Response<AddBookingResponseDto>
             {
                 StatusCode = StatusCodes.Status201Created,
                 Succeeded = true,

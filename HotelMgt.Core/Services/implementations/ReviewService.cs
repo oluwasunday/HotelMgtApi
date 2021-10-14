@@ -24,11 +24,11 @@ namespace HotelMgt.Core.Services.implementations
             _mapper = mapper;
         }
 
-        public async Task<Response<string>> AddReview(AddReviewDto reviewDto)
+        public async Task<Dtos.Response<string>> AddReview(AddReviewDto reviewDto)
         {
             Customer customer = await _unitOfWork.Customers.GetAsync(reviewDto.CustomerId);
             if (customer == null)
-                return new Response<string>
+                return new Dtos.Response<string>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -39,7 +39,7 @@ namespace HotelMgt.Core.Services.implementations
             await _unitOfWork.Reviews.AddAsync(review);
             await _unitOfWork.CompleteAsync();
 
-            return new Response<string>
+            return new Dtos.Response<string>
             {
                 StatusCode = StatusCodes.Status201Created,
                 Succeeded = true,
@@ -48,12 +48,12 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public Response<List<AddReviewResponseDto>> GetAllReviews()
+        public Dtos.Response<List<AddReviewResponseDto>> GetAllReviews()
         {
             var ratings = _unitOfWork.Reviews.GetAll().ToList();
             var ratingRespone = _mapper.Map<List<AddReviewResponseDto>>(ratings);
 
-            return new Response<List<AddReviewResponseDto>>
+            return new Dtos.Response<List<AddReviewResponseDto>>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
@@ -62,10 +62,10 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public async Task<Response<AddReviewResponseDto>> GetReviewById(string id)
+        public async Task<Dtos.Response<AddReviewResponseDto>> GetReviewById(string id)
         {
             if(id == null)
-                return new Response<AddReviewResponseDto>
+                return new Dtos.Response<AddReviewResponseDto>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -75,7 +75,7 @@ namespace HotelMgt.Core.Services.implementations
 
             var review = await _unitOfWork.Reviews.GetAsync(id);
             if (review == null)
-                return new Response<AddReviewResponseDto>
+                return new Dtos.Response<AddReviewResponseDto>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -85,7 +85,7 @@ namespace HotelMgt.Core.Services.implementations
 
             var reviewResponse = _mapper.Map<AddReviewResponseDto>(review);
 
-            return new Response<AddReviewResponseDto>
+            return new Dtos.Response<AddReviewResponseDto>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
@@ -94,11 +94,11 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public async Task<Response<List<AddReviewResponseDto>>> GetAllReviewsByCustomerId(string customerId)
+        public async Task<Dtos.Response<List<AddReviewResponseDto>>> GetAllReviewsByCustomerId(string customerId)
         {
             var customer = await _unitOfWork.Customers.GetAsync(customerId);
             if (customer == null)
-                return new Response<List<AddReviewResponseDto>>
+                return new Dtos.Response<List<AddReviewResponseDto>>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -109,7 +109,7 @@ namespace HotelMgt.Core.Services.implementations
             var review = _unitOfWork.Reviews.GetReviewsByCustomerId(customerId);
             var reviewResponse = _mapper.Map<List<AddReviewResponseDto>>(review);
 
-            return new Response<List<AddReviewResponseDto>>
+            return new Dtos.Response<List<AddReviewResponseDto>>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
@@ -118,11 +118,11 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public async Task<Response<string>> DeleteReview(string id)
+        public async Task<Dtos.Response<string>> DeleteReview(string id)
         {
             var review = await _unitOfWork.Reviews.GetAsync(id);
             if(review == null)
-                return new Response<string>
+                return new Dtos.Response<string>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -133,7 +133,7 @@ namespace HotelMgt.Core.Services.implementations
             _unitOfWork.Reviews.Remove(review);
             await _unitOfWork.CompleteAsync();
 
-            return new Response<string>
+            return new Dtos.Response<string>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
@@ -142,11 +142,11 @@ namespace HotelMgt.Core.Services.implementations
             };
         }
 
-        public async Task<Response<AddReviewResponseDto>> UpdateReviewAsync(UpdateReviewDto reviewDto)
+        public async Task<Dtos.Response<AddReviewResponseDto>> UpdateReviewAsync(UpdateReviewDto reviewDto)
         {
             var review = await _unitOfWork.Reviews.GetAsync(reviewDto.Id);
             if (review == null)
-                return new Response<AddReviewResponseDto>
+                return new Dtos.Response<AddReviewResponseDto>
                 {
                     StatusCode = StatusCodes.Status404NotFound,
                     Succeeded = false,
@@ -162,7 +162,7 @@ namespace HotelMgt.Core.Services.implementations
 
             AddReviewResponseDto response = _mapper.Map<AddReviewResponseDto>(result);
 
-            return new Response<AddReviewResponseDto>
+            return new Dtos.Response<AddReviewResponseDto>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
