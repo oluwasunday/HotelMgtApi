@@ -7,5 +7,6 @@ namespace HotelMgt.Core.Repositories.interfaces
     public interface IReviewRepository : IRepository<Review>
     {
         List<Review> GetReviewsByCustomerId(string customerId);
+        Review UpdateReview(Review review);
     }
 }

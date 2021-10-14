@@ -25,5 +25,11 @@ namespace HotelMgt.Core.Repositories.implementations
 
             return reviews;
         }
+
+        public Review UpdateReview(Review review)
+        {
+            _context.Update(review);
+            return review;
+        }
     }
 }

@@ -54,7 +54,8 @@ namespace HotelMgt.Core.Utilities
             CreateMap<AddRatingsDto, Rating>().ReverseMap();
 
             // review mappings
-            CreateMap<AddRatingsDto, Review>().ReverseMap();
+            CreateMap<AddReviewDto, Review>().ReverseMap();
+            CreateMap<AddReviewResponseDto, Review>().ReverseMap();
         }
     }
 }
