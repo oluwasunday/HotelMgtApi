@@ -42,7 +42,6 @@ namespace HotelMgt.Core.Services.implementations
             await _unitOfWork.CompleteAsync();
 
             var response = _mapper.Map<AddRatingResponseDto>(rating);
-
             return new Response<AddRatingResponseDto>
             {
                 StatusCode = StatusCodes.Status201Created,
@@ -78,6 +77,15 @@ namespace HotelMgt.Core.Services.implementations
                 };
 
             var rating = await _unitOfWork.Ratings.GetAsync(id);
+            if (rating == null)
+                return new Response<AddRatingResponseDto>
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Succeeded = false,
+                    Data = null,
+                    Message = "Failed, Customer not found"
+                };
+
             var ratingRespone = _mapper.Map<AddRatingResponseDto>(rating);
 
             return new Response<AddRatingResponseDto>
