@@ -36,10 +36,9 @@ namespace HotelMgt.Core.Repositories.implementations
             return ratings;
         }
 
-        public async Task<Rating> UpdateRatingAsync(Rating rating)
+        public Rating UpdateRatingAsync(Rating rating)
         {
             _context.Update(rating);
-            await _context.SaveChangesAsync();
 
             return rating;
         }

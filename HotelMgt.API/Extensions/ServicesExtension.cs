@@ -9,6 +9,7 @@ using HotelMgt.Core.UnitOfWork.implementations;
 using HotelMgt.Dtos.BookingDtos;
 using HotelMgt.Dtos.CustomerDtos;
 using HotelMgt.Dtos.RatingDtos;
+using HotelMgt.Dtos.ReviewDtos;
 using HotelMgt.Utilities;
 using HotelMgt.Utilities.Settings;
 using HotelMgt.Utilities.Validations;
@@ -38,6 +39,7 @@ namespace HotelMgt.API.Extensions
             services.AddTransient<IValidator<AddCustomerDto>, AddCustomerDtoValidator>();
             services.AddTransient<IValidator<UpdateRatingDto>, UpdateRatingValidatorDto>();
             services.AddTransient<IValidator<AddBookingDto>, AddBookingDtoValidator>();
+            services.AddTransient<IValidator<AddReviewDto>, AddReviewDtoValidator>();
 
             // Authentication
             services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();

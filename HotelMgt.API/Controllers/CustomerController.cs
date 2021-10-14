@@ -141,5 +141,17 @@ namespace HotelMgt.API.Controllers
             var result = await _ratingService.UpdateRating(ratingDto);
             return StatusCode(result.StatusCode, result);
         }
+
+        [HttpPost("ratings")]
+        //[Authorize(Roles = "Customer")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AddRatings(AddRatingsDto ratingsDto)
+        {
+            var result = await _ratingService.AddRatings(ratingsDto);
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }

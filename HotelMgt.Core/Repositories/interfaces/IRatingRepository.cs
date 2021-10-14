@@ -9,7 +9,7 @@ namespace HotelMgt.Core.Repositories.interfaces
     {
         double GetRatingAverage();
         double GetRatingAverageByCustomer(string customerId);
-        Task<Rating> UpdateRatingAsync(Rating rating);
+        Rating UpdateRatingAsync(Rating rating);
         IEnumerable<Rating> GetRatingByCustomerId(string customerId);
         Task<Rating> UpdateRatingByCustomerIdAsync(string customerId, string ratingId, int ratingValue);
 
