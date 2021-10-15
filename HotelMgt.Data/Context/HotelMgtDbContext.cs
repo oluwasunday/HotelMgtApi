@@ -1,4 +1,5 @@
-﻿using HotelMgt.Models;
+﻿using hotel_booking_models;
+using HotelMgt.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -25,9 +26,10 @@ namespace HotelMgt.Data
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<Amenity> Amenities {  get; set; }
+        public DbSet<Gallery> Galleries {  get; set; }
 
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        /*public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             foreach (var item in ChangeTracker.Entries<BaseModel>())
             {
@@ -45,7 +47,7 @@ namespace HotelMgt.Data
                 }
             }
             return await base.SaveChangesAsync(cancellationToken);
-        }
+        }*/
     }
 
 }

@@ -24,7 +24,7 @@ namespace HotelMgt.Core.Services.implementations
             _mapper = mapper;
         }
 
-        public async Task<Dtos.Response<AddCustomerResponseDto>> GetCustomerById(string id)
+        public async Task<Response<AddCustomerResponseDto>> GetCustomerById(string id)
         {
             var message = "";
 
@@ -34,7 +34,7 @@ namespace HotelMgt.Core.Services.implementations
                 message = "Invalid user Id";
             
             var response = _mapper.Map<AddCustomerResponseDto>(customer);
-            var result = new Dtos.Response<AddCustomerResponseDto>()
+            var result = new Response<AddCustomerResponseDto>()
             {
                 StatusCode = message == ""? (int)StatusCodes.Status200OK : (int)StatusCodes.Status400BadRequest,
                 Succeeded = message == ""? true: false,
@@ -45,7 +45,7 @@ namespace HotelMgt.Core.Services.implementations
             return result;
         }
 
-        public async Task<Dtos.Response<AddCustomerResponseDto>> AddCustomer(AddCustomerDto customerDto)
+        public async Task<Response<AddCustomerResponseDto>> AddCustomer(AddCustomerDto customerDto)
         {
             var customer = _mapper.Map<Customer>(customerDto);
 
@@ -54,7 +54,7 @@ namespace HotelMgt.Core.Services.implementations
 
             var response = _mapper.Map<AddCustomerResponseDto>(customer);
 
-            return new Dtos.Response<AddCustomerResponseDto>
+            return new Response<AddCustomerResponseDto>
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
