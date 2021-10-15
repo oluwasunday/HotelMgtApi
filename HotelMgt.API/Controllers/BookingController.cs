@@ -4,6 +4,7 @@ using HotelMgt.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace HotelMgt.API.Controllers
@@ -42,7 +43,8 @@ namespace HotelMgt.API.Controllers
         public async Task<IActionResult> AddBooking([FromBody]AddBookingDto bookingDto)
         {
             var user = await _userManager.GetUserAsync(User);
-            var bookings = await _bookingService.AddBookingAsync("2ccd5586-51f2-444c-aa63-e13012748dfa", bookingDto);
+            //string userId = HttpContext.User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value;
+            var bookings = await _bookingService.AddBookingAsync(user.Id, bookingDto);
             return StatusCode(bookings.StatusCode, bookings);
         }
     }

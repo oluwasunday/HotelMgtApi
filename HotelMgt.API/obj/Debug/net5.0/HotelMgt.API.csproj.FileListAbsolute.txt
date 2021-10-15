@@ -52,7 +52,6 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\jsons\roomtypes.json
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\NLog.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\NLog.Extensions.Logging.dll
@@ -100,3 +99,5 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\Razor\Pages\ResetPassword.cshtml.g.cs
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.RazorTargetAssemblyInfo.cs
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.Views.pdb
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\Serilog.Sinks.PeriodicBatching.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\Serilog.Sinks.PostgreSQL.dll

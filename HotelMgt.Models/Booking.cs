@@ -14,6 +14,5 @@ namespace HotelMgt.Models
         public Customer Customer { get; set; }
         public Payment Payment { get; set; }
         public ICollection<RoomType> RoomTypes { get; set; }
-        public ICollection<Amenity> Amenities { get; set; }
     }
 }

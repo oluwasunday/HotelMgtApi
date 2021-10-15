@@ -24,14 +24,8 @@ namespace HotelMgt.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("BookingId")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("text");
 
                     b.Property<decimal>("Discount")
                         .HasColumnType("numeric");
@@ -46,10 +40,6 @@ namespace HotelMgt.Data.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BookingId");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Amenities");
                 });
@@ -469,19 +459,31 @@ namespace HotelMgt.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HotelMgt.Models.Amenity", b =>
+            modelBuilder.Entity("hotel_booking_models.Gallery", b =>
                 {
-                    b.HasOne("HotelMgt.Models.Booking", "Booking")
-                        .WithMany("Amenities")
-                        .HasForeignKey("BookingId");
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
-                    b.HasOne("HotelMgt.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.Navigation("Booking");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
 
-                    b.Navigation("Customer");
+                    b.Property<bool>("IsFeature")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("RoomId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Galleries");
                 });
 
             modelBuilder.Entity("HotelMgt.Models.Booking", b =>
@@ -602,6 +604,15 @@ namespace HotelMgt.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("hotel_booking_models.Gallery", b =>
+                {
+                    b.HasOne("HotelMgt.Models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId");
+
+                    b.Navigation("Room");
+                });
+
             modelBuilder.Entity("HotelMgt.Models.AppUser", b =>
                 {
                     b.Navigation("Customer");
@@ -609,8 +620,6 @@ namespace HotelMgt.Data.Migrations
 
             modelBuilder.Entity("HotelMgt.Models.Booking", b =>
                 {
-                    b.Navigation("Amenities");
-
                     b.Navigation("Payment");
 
                     b.Navigation("RoomTypes");
