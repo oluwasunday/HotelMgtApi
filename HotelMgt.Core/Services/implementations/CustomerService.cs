@@ -5,6 +5,7 @@ using HotelMgt.Dtos;
 using HotelMgt.Dtos.CustomerDtos;
 using HotelMgt.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,13 @@ namespace HotelMgt.Core.Services.implementations
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly UserManager<AppUser> _userManager;
 
-        public CustomerService(IUnitOfWork unitOfWork, IMapper mapper)
+        public CustomerService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
         public async Task<Response<AddCustomerResponseDto>> GetCustomerById(string id)
@@ -48,9 +51,12 @@ namespace HotelMgt.Core.Services.implementations
         public async Task<Response<AddCustomerResponseDto>> AddCustomer(AddCustomerDto customerDto)
         {
             var customer = _mapper.Map<Customer>(customerDto);
+            var user = await _userManager.FindByIdAsync(customer.AppUserId);
+            if(user == null) { return Response<AddCustomerResponseDto>.Fail("Account not found, customer needs to register"); };
 
             await _unitOfWork.Customers.AddAsync(customer);
             await _unitOfWork.CompleteAsync();
+            await _userManager.AddToRoleAsync(user, "Customer");
 
             var response = _mapper.Map<AddCustomerResponseDto>(customer);
 
