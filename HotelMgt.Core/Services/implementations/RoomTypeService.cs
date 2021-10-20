@@ -31,13 +31,7 @@ namespace HotelMgt.Core.Services.implementations
             await _unitOfWork.CompleteAsync();
 
             var response = _mapper.Map<RoomTypeResponseDto>(roomType);
-            return new Response<RoomTypeResponseDto>()
-            {
-                StatusCode = StatusCodes.Status200OK,
-                Succeeded = true,
-                Message = "Added successfully",
-                Data = response
-            };
+            return Response<RoomTypeResponseDto>.Success("Added successfully", response);
         
         }
 
@@ -48,7 +42,7 @@ namespace HotelMgt.Core.Services.implementations
                 return Response<RoomTypeResponseDto>.Fail("Not found!");
 
             var response = _mapper.Map<RoomTypeResponseDto>(roomType);
-            return Response<RoomTypeResponseDto>.Success(response);
+            return Response<RoomTypeResponseDto>.Success("Success", response);
         }
 
         public Response<List<RoomTypeResponseDto>> GetAllRoomTypes()
@@ -58,7 +52,7 @@ namespace HotelMgt.Core.Services.implementations
                 return Response<List<RoomTypeResponseDto>>.Fail("Not content found!");
 
             var response = _mapper.Map<List<RoomTypeResponseDto>>(roomTypes);
-            return Response<List<RoomTypeResponseDto>>.Success(response);
+            return Response<List<RoomTypeResponseDto>>.Success("Success", response);
         }
 
         public async Task<Response<string>> DeleteRoomType(string roomTypeId)
@@ -70,13 +64,7 @@ namespace HotelMgt.Core.Services.implementations
             _unitOfWork.RoomTypes.Remove(roomType);
             await _unitOfWork.CompleteAsync();
 
-            return new Response<string>()
-            {
-                StatusCode = StatusCodes.Status200OK,
-                Succeeded = true,
-                Message = "Deleted successfully",
-                Data = null
-            };
+            return Response<string>.Success("Deleted successfully", null);
         }
 
         public async Task<Response<string>> UpdateRoomType(string roomTypeId, UpdateRoomTypeDto roomTypeDto)
@@ -94,13 +82,7 @@ namespace HotelMgt.Core.Services.implementations
             _unitOfWork.RoomTypes.UpdateRoomType(roomType);
             await _unitOfWork.CompleteAsync();
 
-            return new Response<string>()
-            {
-                StatusCode = StatusCodes.Status200OK,
-                Succeeded = true,
-                Message = "Updated successfully",
-                Data = null
-            };
+            return Response<string>.Success("Updated successfully", null);
         }
     }
 }

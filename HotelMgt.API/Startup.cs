@@ -87,6 +87,9 @@ namespace HotelMgt.API
             // Configure dependency injection
             services.AddDependencyInjection();
 
+            // Configure cloudinary
+            services.AddCloudinary(CloudinaryServiceExtension.GetAccount(Configuration));
+
             services.AddRazorPages();
         }
 

@@ -3,6 +3,7 @@ using HotelMgt.Core.Services.abstractions;
 using HotelMgt.Core.UnitOfWork.abstractions;
 using HotelMgt.Dtos;
 using HotelMgt.Dtos.CustomerDtos;
+using HotelMgt.Dtos.ImageDtos;
 using HotelMgt.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -75,6 +76,21 @@ namespace HotelMgt.Core.Services.implementations
             var response =  _mapper.Map<List<AddCustomerResponseDto>>(customers);
 
             return response;
+        }
+
+        public async Task<Response<string>> UpdatePhotoAsync(string userId, AddImageDto imageDto)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return Response<string>.Fail(nameof(userId) + " not found");
+                
+
+            user.PublicId = imageDto.PublicId;
+            user.Avatar = imageDto.Avatar;
+            user.UpdatedAt = DateTime.UtcNow;
+            await _userManager.UpdateAsync(user);
+
+            return Response<string>.Success("Successfully updated", user.Avatar);
         }
     }
 }
