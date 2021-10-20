@@ -1,5 +1,6 @@
 ﻿using HotelMgt.Core.Services.abstractions;
 using HotelMgt.Dtos.CustomerDtos;
+using HotelMgt.Dtos.ImageDtos;
 using HotelMgt.Dtos.RatingDtos;
 using HotelMgt.Dtos.ReviewDtos;
 using HotelMgt.Models;
@@ -22,14 +23,16 @@ namespace HotelMgt.API.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IRatingService _ratingService;
         private readonly IReviewService _reviewService;
+        private readonly IImageService _imageService;
 
         public CustomerController(ICustomerService customerService, UserManager<AppUser> userManager,
-            IRatingService ratingService, IReviewService reviewService)
+            IRatingService ratingService, IReviewService reviewService, IImageService imageService)
         {
             _customerService = customerService;
             _userManager = userManager;
             _ratingService = ratingService;
             _reviewService = reviewService;
+            _imageService = imageService;
         }
 
         [HttpGet("id")]
@@ -239,6 +242,26 @@ namespace HotelMgt.API.Controllers
                 var result = await _reviewService.UpdateReviewAsync(reviewDto);
                 return StatusCode(result.StatusCode, result);
             }
+            return BadRequest("Pls provide required data");
+        }
+
+        [HttpPatch("updateimage")]
+        [Authorize(Roles = "Customer")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateCustomerImage(IFormFile formFile)
+        {
+            AppUser user = await _userManager.GetUserAsync(User);
+            var upload = await _imageService.UploadImageAsync(formFile);
+            
+            AddImageDto imageDto = new AddImageDto() { Avatar = upload.Url.ToString(), PublicId = upload.PublicId};
+            var updateUser = await _customerService.UpdatePhotoAsync(user.Id, imageDto);
+
+            if (updateUser != null)
+                return StatusCode(updateUser.StatusCode, updateUser);
+
             return BadRequest("Pls provide required data");
         }
     }
