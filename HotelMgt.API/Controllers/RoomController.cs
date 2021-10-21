@@ -1,4 +1,5 @@
 ﻿using HotelMgt.Core.Services.abstractions;
+using HotelMgt.Dtos.GalleryDtos;
 using HotelMgt.Dtos.RoomDtos;
 using HotelMgt.Dtos.RoomTypeDtos;
 using HotelMgt.Models;
@@ -15,11 +16,16 @@ namespace HotelMgt.API.Controllers
     {
         private readonly IRoomService _roomService;
         private readonly IRoomTypeService _roomTypeService;
+        private readonly IGalleryService _galleryService;
+        private readonly IImageService _imageService;
 
-        public RoomController(IRoomService roomService, IRoomTypeService roomTypeService)
+        public RoomController(IRoomService roomService, IRoomTypeService roomTypeService, 
+            IGalleryService galleryService, IImageService imageService)
         {
             _roomService = roomService;
             _roomTypeService = roomTypeService;
+            _galleryService = galleryService;
+            _imageService = imageService;
         }
 
         [HttpGet]
@@ -119,6 +125,50 @@ namespace HotelMgt.API.Controllers
         {
             var roomType = await _roomTypeService.UpdateRoomType(roomTypeId, roomTypeDto);
             return StatusCode(roomType.StatusCode, roomType);
+        }
+
+        [HttpPost("rooms/gallery")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AddRoomGallery(AddGalleryDto galleryDto)
+        {
+            var result = await _galleryService.AddImageToRoom(galleryDto);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("rooms/{roomId}/gallery")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult RoomGallery(string roomId)
+        {
+            var result = _galleryService.GetGalleriesForARoom(roomId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPatch("rooms/{roomId}/gallery/")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateRoomPhotoById(UpdateRoomPhotoDto updateRoomPhoto)
+        {
+            var result = await _galleryService.UpdateRoomPhotoAsync(updateRoomPhoto);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpDelete("gallery/{galleryId}")]
+        //[Authorize(Roles = "Manager, Admin")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteRoomPhotoById(string galleryId)
+        {
+            var result = await _galleryService.DeleteRoomPhotoAsync(galleryId);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

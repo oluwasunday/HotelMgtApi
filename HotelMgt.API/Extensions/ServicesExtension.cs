@@ -2,6 +2,8 @@
 using hotel_booking_core.Services;
 using HotelMgt.Core;
 using HotelMgt.Core.interfaces;
+using HotelMgt.Core.Repositories.implementations;
+using HotelMgt.Core.Repositories.interfaces;
 using HotelMgt.Core.Services.abstractions;
 using HotelMgt.Core.Services.implementations;
 using HotelMgt.Core.UnitOfWork.abstractions;
@@ -43,6 +45,7 @@ namespace HotelMgt.API.Extensions
             services.AddScoped<IAmenityService, AmenityService>();
             services.AddScoped<IRoomTypeService, RoomTypeService>();
             services.AddScoped<IImageService, ImageService>();
+            services.AddScoped<IGalleryService, GalleryService>();
 
             // Add Fluent Validator Injections Here
             services.AddTransient<IValidator<AddCustomerDto>, AddCustomerDtoValidator>();
