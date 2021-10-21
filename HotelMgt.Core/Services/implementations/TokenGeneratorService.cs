@@ -27,7 +27,7 @@ namespace HotelMgt.Core.Services.implementations
         {
             var claims = new List<Claim>()
             {
-                new Claim("Email", model.Email),
+                new Claim(ClaimTypes.Email, model.Email),
                 new Claim(ClaimTypes.NameIdentifier, model.Id)
             };
 

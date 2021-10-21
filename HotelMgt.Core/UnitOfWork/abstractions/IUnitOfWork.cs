@@ -14,6 +14,7 @@ namespace HotelMgt.Core.UnitOfWork.abstractions
         IReviewRepository Reviews { get; }
         IAmenityRepository Amenities { get; }
         IRoomTypeRepository RoomTypes { get; }
+        IGalleryRepository Galleries { get; }
         Task CompleteAsync();
     }
 }

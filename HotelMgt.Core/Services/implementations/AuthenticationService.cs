@@ -23,18 +23,21 @@ namespace HotelMgt.Core.Services.implementations
         private readonly ITokenGeneratorService _tokenGenerator;
         private readonly IMailService _mailService;
         private IConfiguration _configuration;
+        private readonly ImageService _imageService;
+
         //private const string FilePath = "../HotelMgtAPI/StaticFiles/";
 
 
         public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper, 
             ITokenGeneratorService tokenGenerator, IMailService mailService,
-            IConfiguration configuration)
+            IConfiguration configuration, ImageService imageService)
         {
             _userManager = userManager;
             _mapper = mapper;
             _tokenGenerator = tokenGenerator;
             _mailService = mailService;
             _configuration = configuration;
+            _imageService = imageService;
             //_mailService = mailService;
         }
 
@@ -44,14 +47,15 @@ namespace HotelMgt.Core.Services.implementations
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async Task<Dtos.Response<RegisterResponseDto>> RegisterUserAsync(RegisterDto model)
+        public async Task<Response<RegisterResponseDto>> RegisterUserAsync(RegisterDto model)
         {
             string errors = "";
             var user = _mapper.Map<AppUser>(model);
+            //user.Avatar = _imageService.UploadImageAsync(user.Avatar);
 
             var responseDto = _mapper.Map<RegisterResponseDto>(user);
             if (model.Password != model.ConfirmPassword)
-                return new Dtos.Response<RegisterResponseDto>()
+                return new Response<RegisterResponseDto>()
                 {
                     StatusCode = StatusCodes.Status400BadRequest,
                     Succeeded = false,
@@ -81,7 +85,7 @@ namespace HotelMgt.Core.Services.implementations
 
                 await _mailService.SendEmailAsync(mailDto);
 
-                return new Dtos.Response<RegisterResponseDto>()
+                return new Response<RegisterResponseDto>()
                 {
                     StatusCode = StatusCodes.Status201Created,
                     Succeeded = true,
@@ -92,7 +96,7 @@ namespace HotelMgt.Core.Services.implementations
             }
 
             errors = GetErrors(result);
-            return new Dtos.Response<RegisterResponseDto>()
+            return new Response<RegisterResponseDto>()
             {
                 StatusCode = StatusCodes.Status400BadRequest,
                 Succeeded = false,
@@ -103,11 +107,11 @@ namespace HotelMgt.Core.Services.implementations
         }
 
 
-        public async Task<Dtos.Response<LoginResponseDto>> LoginUserAsync(LoginDto model)
+        public async Task<Response<LoginResponseDto>> LoginUserAsync(LoginDto model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
             if(user == null)
-                return new Dtos.Response<LoginResponseDto>()
+                return new Response<LoginResponseDto>()
                 {
                     StatusCode = StatusCodes.Status400BadRequest,
                     Succeeded = false,
@@ -117,7 +121,7 @@ namespace HotelMgt.Core.Services.implementations
 
             var result = await _userManager.CheckPasswordAsync(user, model.Password);
             if(!result)
-                return new Dtos.Response<LoginResponseDto>()
+                return new Response<LoginResponseDto>()
                 {
                     StatusCode = StatusCodes.Status400BadRequest,
                     Succeeded = false,
@@ -128,7 +132,7 @@ namespace HotelMgt.Core.Services.implementations
             var token = await _tokenGenerator.GenerateToken(user);
             await _mailService.SendEmailAsync(new MailRequestDto { ToEmail = user.Email, Subject = "New login", Body = $"<h1>Hello, new login to your account noticed!</h1>\n<p>New login to your account on Hotel Management</p> at {DateTime.UtcNow}", Attachments = null });
 
-            return new Dtos.Response<LoginResponseDto>()
+            return new Response<LoginResponseDto>()
             {
                 StatusCode = StatusCodes.Status200OK,
                 Message = "Login Successful",
@@ -139,10 +143,10 @@ namespace HotelMgt.Core.Services.implementations
 
 
 
-        public async Task<Dtos.Response<string>> ConfirmEmailAsync(ConfirmEmailDto confirmEmailDto)
+        public async Task<Response<string>> ConfirmEmailAsync(ConfirmEmailDto confirmEmailDto)
         {
             var user = await _userManager.FindByEmailAsync(confirmEmailDto.Email);
-            var response = new Dtos.Response<string>();
+            var response = new Response<string>();
             if (user == null)
             {
                 response.Message = "User not found";
@@ -175,12 +179,12 @@ namespace HotelMgt.Core.Services.implementations
             return result.Errors.Aggregate(string.Empty, (current, err) => current + err.Description + "\n");
         }
 
-        public async Task<Dtos.Response<string>> ForgetPasswordAsync(string email)
+        public async Task<Response<string>> ForgetPasswordAsync(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null)
             {
-                return new Dtos.Response<string>()
+                return new Response<string>()
                 {
                     StatusCode = (int)HttpStatusCode.NotFound,
                     Succeeded = false,
@@ -199,7 +203,7 @@ namespace HotelMgt.Core.Services.implementations
             await _mailService.SendEmailAsync(new MailRequestDto { ToEmail = email, Subject = "Reset Password", 
                 Body = $"<h1>Follow the instructions to reset your password</h1>\n<p>To reset your password, <a href='{url}'>click here</a></p>" });
 
-            return new Dtos.Response<string>() 
+            return new Response<string>() 
             { StatusCode= StatusCodes.Status200OK, 
                 Succeeded=true, 
                 Data="Reset link sent to specified email", 

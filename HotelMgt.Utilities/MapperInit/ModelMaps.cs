@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using hotel_booking_models;
 using HotelMgt.Dtos;
 using HotelMgt.Dtos.AmenityDtos;
 using HotelMgt.Dtos.AuthenticationDto;
 using HotelMgt.Dtos.BookingDtos;
 using HotelMgt.Dtos.CustomerDtos;
+using HotelMgt.Dtos.GalleryDtos;
 using HotelMgt.Dtos.RatingDtos;
 using HotelMgt.Dtos.ReviewDtos;
 using HotelMgt.Dtos.RoomDtos;
@@ -67,6 +69,10 @@ namespace HotelMgt.Core.Utilities
             CreateMap<AddRoomTypeDto, RoomType>().ReverseMap();
             CreateMap<RoomTypeResponseDto, RoomType>().ReverseMap();
             CreateMap<UpdateRoomTypeDto, RoomType>().ReverseMap();
+
+            // gallery mappings
+            CreateMap<AddGalleryDto, Gallery>().ReverseMap();
+            CreateMap<Gallery, AddGalleryResponseDto>().ReverseMap();
         }
     }
 }
