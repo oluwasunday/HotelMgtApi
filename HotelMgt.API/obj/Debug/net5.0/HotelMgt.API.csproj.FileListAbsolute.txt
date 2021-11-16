@@ -3,7 +3,6 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.AssemblyInfoInputs.cache
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.AssemblyInfo.cs
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.csproj.CoreCompileInputs.cache
-C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\appsettings.json
@@ -48,7 +47,6 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.pdb
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.genruntimeconfig.cache
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\jsons\ratings.json
-C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\jsons\reviews.json
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\jsons\roomtypes.json
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
@@ -101,3 +99,7 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.Views.pdb
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\Serilog.Sinks.PeriodicBatching.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\Serilog.Sinks.PostgreSQL.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\PayStack.Net.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.API\obj\Debug\net5.0\HotelMgt.API.MvcApplicationPartsAssemblyInfo.cs

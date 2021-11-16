@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using HotelMgt.API.Extensions;
 using HotelMgt.Core;
 using HotelMgt.Core.interfaces;
@@ -57,11 +58,6 @@ namespace HotelMgt.API
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );*/
 
-            /*services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "HotelMgt.API", Version = "v1" });
-            });*/
-
 
             // configure CORS for mail service
             services.AddCors(cors =>
@@ -91,6 +87,12 @@ namespace HotelMgt.API
             services.AddCloudinary(CloudinaryServiceExtension.GetAccount(Configuration));
 
             services.AddRazorPages();
+
+            services.AddMvc().AddFluentValidation(fv => {
+                fv.DisableDataAnnotationsValidation = false;
+                fv.RegisterValidatorsFromAssemblyContaining<Startup>();
+                fv.ImplicitlyValidateChildProperties = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

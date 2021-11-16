@@ -55,7 +55,6 @@ namespace HotelMgt.Core.Services.implementations
                     Transformation = new Transformation()
                         .Crop("thumb")
                         .Gravity("face")
-                        .Width(150)
                 });
             }
 

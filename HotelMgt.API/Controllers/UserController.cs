@@ -6,11 +6,12 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HotelMgt.API.Controllers
 {
     [ApiController]
-    [Route("api/v1/users")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
@@ -21,6 +22,7 @@ namespace HotelMgt.API.Controllers
 
 
         [HttpGet()]
+        [Authorize(Roles = "Manager, Admin")]
         public async Task<ActionResult> Users()
         {
             try
@@ -39,6 +41,7 @@ namespace HotelMgt.API.Controllers
 
 
         [HttpPost("add-user")]
+        [Authorize(Roles = "Manager, Admin")]
         public async Task<ActionResult> AddUser(AddUserDto user)
         {
             try
@@ -57,12 +60,13 @@ namespace HotelMgt.API.Controllers
 
 
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> UserById(string id)
+        [HttpGet("{userId}")]
+        [Authorize(Roles = "Manager, Admin")]
+        public async Task<ActionResult> UserById(string userId)
         {
             try
             {
-                var result = await _userRepository.GetUserByIdAsync(id);
+                var result = await _userRepository.GetUserByIdAsync(userId);
                 return Ok(result);
             }
             catch (ArgumentNullException ex)
@@ -77,6 +81,7 @@ namespace HotelMgt.API.Controllers
 
 
         [HttpGet("email")]
+        [Authorize(Roles = "Manager, Admin")]
         public async Task<ActionResult> UserByEmail(string email)
         {
             try
@@ -94,6 +99,7 @@ namespace HotelMgt.API.Controllers
         }
 
         [HttpGet("searchTerm")]
+        [Authorize(Roles = "Manager, Admin")]
         public ActionResult UserByTerm(string searchTerm)
         {
             try
@@ -112,13 +118,12 @@ namespace HotelMgt.API.Controllers
 
 
 
-        [HttpPut("users/{id}")]
+        [HttpPut("{userId}")]
+        [Authorize(Roles = "Manager, Admin")]
         public async Task<ActionResult> UpdateUserById(string id, [FromBody]UpdateUserDto appUser)
         {
             try
             {
-                // var userId = HttpContext.User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value;
-                // var userId = User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value;
                 return Ok(await _userRepository.UpdateUserAsync(id, appUser));
             }
             catch (ArgumentNullException ex)
@@ -131,7 +136,8 @@ namespace HotelMgt.API.Controllers
             }
         }
 
-        [HttpPatch("users/{id}")]
+        [HttpPatch("{userId}")]
+        [Authorize]
         public async Task<ActionResult> UpdateUserPictureAsync(AppUser appUser)
         {
             try

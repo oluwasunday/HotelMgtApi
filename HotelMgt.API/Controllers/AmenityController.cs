@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace HotelMgt.API.Controllers
 {
     [ApiController]
-    [Route("api/v1/[Controller]")]
+    [Route("api/amenities")]
     public class AmenityController : ControllerBase
     {
         private readonly IAmenityService _amenityService;
@@ -19,10 +19,7 @@ namespace HotelMgt.API.Controllers
         }
 
         [HttpPost()]
-        //[Authorize(Roles ="Manager, Admin")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles ="Manager, Admin")]
         public async Task<IActionResult> AddAmenity(AddAmenityDto amenityDto)
         {
             if (amenityDto != null)
@@ -34,10 +31,7 @@ namespace HotelMgt.API.Controllers
         }
 
         [HttpGet("id")]
-        //[Authorize(Roles ="Manager, Admin")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles ="Manager, Admin")]
         public async Task<IActionResult> GetAmenity(string id)
         {
             if (id != null)
@@ -49,9 +43,7 @@ namespace HotelMgt.API.Controllers
         }
 
         [HttpGet("")]
-        //[Authorize(Roles ="Manager, Admin")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles ="Manager, Admin")]
         public IActionResult Amenities()
         {
             try
@@ -67,9 +59,7 @@ namespace HotelMgt.API.Controllers
 
 
         [HttpPut("{id}/update")]
-        //[Authorize(Roles ="Manager, Admin")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles ="Manager, Admin")]
         public async Task<IActionResult> Amenities(string id, [FromBody]UpdateAmenityDto amenityDto)
         {
             try
@@ -84,10 +74,7 @@ namespace HotelMgt.API.Controllers
         }
 
         [HttpDelete("{id}/delete")]
-        //[Authorize(Roles ="Manager, Admin")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles ="Manager, Admin")]
         public async Task<IActionResult> DeleteAmenity(string id)
         {
             var result = await _amenityService.DeleteAmenity(id);

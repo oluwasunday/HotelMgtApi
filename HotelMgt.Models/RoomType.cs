@@ -13,6 +13,5 @@ namespace HotelMgt.Models
         public decimal Discount { get; set; }
         public string Thumbnail { get; set; }
         public ICollection<Room> Rooms { get; set; }
-        public Booking Booking { get; set; }
     }
 }

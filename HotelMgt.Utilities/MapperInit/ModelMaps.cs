@@ -44,9 +44,14 @@ namespace HotelMgt.Core.Utilities
             // booking mappings
             CreateMap<Booking, AddBookingDto>().ReverseMap();
             CreateMap<Booking, AddBookingResponseDto>()
-                .ForMember(
-                dest => dest.Duration,
-                opt => opt.MapFrom(src => $"{src.CheckIn} to {src.CheckOut}"));
+                .ForMember(dest => dest.PaymentReference, opt => opt.MapFrom(src => src.Payment.TransactionReference))
+                .ForMember(x => x.RoomType, y => y.MapFrom(src => src.Room.Roomtype.Name))
+                .ForMember(x => x.RoomNo, y => y.MapFrom(src => src.Room.RoomNo))
+                .ForMember(x => x.Price, y => y.MapFrom(src => src.Room.Roomtype.Price))
+                .ForMember(x => x.BookingStatus, y => y.MapFrom(src => src.BookingStatus));
+            CreateMap<Booking, BookingResponseDto>()
+                .ForMember(x => x.RoomNo, y => y.MapFrom(z => z.Room.RoomNo))
+                .ForMember(x => x.Amount, y => y.MapFrom(z => z.Room.Roomtype.Price));
 
             // room mappings
             CreateMap<Room, RoomDto>().ReverseMap();
@@ -56,10 +61,6 @@ namespace HotelMgt.Core.Utilities
             // rating mappings
             CreateMap<AddRatingResponseDto, Rating>().ReverseMap();
             CreateMap<AddRatingsDto, Rating>().ReverseMap();
-
-            // review mappings
-            CreateMap<AddReviewDto, Review>().ReverseMap();
-            CreateMap<AddReviewResponseDto, Review>().ReverseMap();
 
             // amenity mappings
             CreateMap<AddAmenityDto, Amenity>().ReverseMap();

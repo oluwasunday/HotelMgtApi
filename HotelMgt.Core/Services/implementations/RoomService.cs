@@ -101,5 +101,22 @@ namespace hotel_booking_core.Services
             }            
             return Response<Room>.Fail("Not Found");
         }
+
+        public async Task<Response<RoomDto>> CheckoutRooomById(string roomId)
+        {
+            var room = await _unitOfWork.Rooms.GetAsync(roomId);
+
+            if (room != null)
+            {
+                room.IsBooked = false;
+                _unitOfWork.Rooms.UpdateBookedRoom(room);
+                await _unitOfWork.CompleteAsync();
+
+                var response = _mapper.Map<RoomDto>(room);
+
+                return Response<RoomDto>.Success("success", response);
+            }
+            return Response<RoomDto>.Fail("Not Found");
+        }
     }
 }

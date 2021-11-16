@@ -37,7 +37,7 @@ namespace HotelMgt.Core.Services.implementations
 
         public async Task<Response<RoomTypeResponseDto>> GetRoomType(string roomTypeId)
         {
-            RoomType roomType = await _unitOfWork.RoomTypes.GetAsync(roomTypeId);
+            RoomType roomType = await _unitOfWork.RoomTypes.GetRoomTypeByIdAsync(roomTypeId);
             if (roomType == null)
                 return Response<RoomTypeResponseDto>.Fail("Not found!");
 

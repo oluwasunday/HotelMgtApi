@@ -20,7 +20,7 @@ namespace HotelMgt.Core.Services.implementations
             _mailSettings = options.Value;
         }
 
-        public async Task<Dtos.Response<string>> SendEmailAsync(MailRequestDto mailRequest)
+        public async Task<Response<string>> SendEmailAsync(MailRequestDto mailRequest)
         {
             var email = new MimeMessage();
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
@@ -53,7 +53,7 @@ namespace HotelMgt.Core.Services.implementations
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
 
-            return new Dtos.Response<string>
+            return new Response<string>
             {
                 StatusCode = StatusCodes.Status204NoContent,
                 Succeeded = true,
