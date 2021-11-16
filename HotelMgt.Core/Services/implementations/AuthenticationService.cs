@@ -23,19 +23,21 @@ namespace HotelMgt.Core.Services.implementations
         private readonly ITokenGeneratorService _tokenGenerator;
         private readonly IMailService _mailService;
         private IConfiguration _configuration;
+        private readonly IImageService _imageService;
+
         //private const string FilePath = "../HotelMgtAPI/StaticFiles/";
 
 
         public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper, 
             ITokenGeneratorService tokenGenerator, IMailService mailService,
-            IConfiguration configuration)
+            IConfiguration configuration, IImageService imageService)
         {
             _userManager = userManager;
             _mapper = mapper;
             _tokenGenerator = tokenGenerator;
             _mailService = mailService;
             _configuration = configuration;
-            //_mailService = mailService;
+            _imageService = imageService;
         }
 
 
@@ -48,6 +50,7 @@ namespace HotelMgt.Core.Services.implementations
         {
             string errors = "";
             var user = _mapper.Map<AppUser>(model);
+            //user.Avatar = _imageService.UploadImageAsync(user.Avatar);
 
             var responseDto = _mapper.Map<RegisterResponseDto>(user);
             if (model.Password != model.ConfirmPassword)
@@ -72,7 +75,7 @@ namespace HotelMgt.Core.Services.implementations
                 var encodedEmailToken = Encoding.UTF8.GetBytes(emailToken);
                 var validEmailToken = WebEncoders.Base64UrlEncode(encodedEmailToken);
 
-                string url = $"{_configuration["AppUrl"]}api/v1/Auth/confirmemail?email={user.Email}&token={validEmailToken}";
+                string url = $"{_configuration["AppUrl"]}api/Auth/confirmemail?email={user.Email}&token={validEmailToken}";
                 var mailDto = new MailRequestDto { 
                     ToEmail=user.Email, 
                     Subject="Confirm your email", 
@@ -126,7 +129,7 @@ namespace HotelMgt.Core.Services.implementations
                 };
             
             var token = await _tokenGenerator.GenerateToken(user);
-            await _mailService.SendEmailAsync(new MailRequestDto { ToEmail = user.Email, Subject = "New login", Body = $"<h1>Hello, new login to your account noticed!</h1>\n<p>New login to your account on Hotel Management</p> at {DateTime.UtcNow}", Attachments = null });
+            //await _mailService.SendEmailAsync(new MailRequestDto { ToEmail = user.Email, Subject = "New login", Body = $"<h1>Hello, new login to your account noticed!</h1>\n<p>New login to your account on Hotel Management</p> at {DateTime.UtcNow}", Attachments = null });
 
             return new Response<LoginResponseDto>()
             {
@@ -200,7 +203,7 @@ namespace HotelMgt.Core.Services.implementations
                 Body = $"<h1>Follow the instructions to reset your password</h1>\n<p>To reset your password, <a href='{url}'>click here</a></p>" });
 
             return new Response<string>() 
-            { StatusCode=StatusCodes.Status200OK, 
+            { StatusCode= StatusCodes.Status200OK, 
                 Succeeded=true, 
                 Data="Reset link sent to specified email", 
                 Message="Successful", 
@@ -216,7 +219,7 @@ namespace HotelMgt.Core.Services.implementations
                 {
                     StatusCode = (int)HttpStatusCode.NotFound,
                     Succeeded = false,
-                    Data = "Failed",
+                    Data = null,
                     Message = "User not found",
                     Errors = null
                 };

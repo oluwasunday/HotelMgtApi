@@ -41,7 +41,9 @@ namespace HotelMgt.Data.Seeder
                         PublicId = null,
                         Avatar = "http://placehold.it/32x32",
                         CreatedAt = DateTime.Now,
-                        UpdatedAt = DateTime.Now
+                        UpdatedAt = DateTime.Now,
+                        EmailConfirmed = true,
+                        PhoneNumberConfirmed = true
                    },
                    new AppUser
                     {
@@ -57,7 +59,9 @@ namespace HotelMgt.Data.Seeder
                         PublicId = null,
                         Avatar = "http://placehold.it/32x32",
                         CreatedAt = DateTime.Now,
-                        UpdatedAt = DateTime.Now
+                        UpdatedAt = DateTime.Now,
+                        EmailConfirmed = true,
+                        PhoneNumberConfirmed = true
                     }
                 };
 
@@ -74,10 +78,12 @@ namespace HotelMgt.Data.Seeder
                 var path = File.ReadAllText(baseDir + @"/jsons/users.json");
 
                 var hotelMgtUsers = JsonConvert.DeserializeObject<List<AppUser>>(path);
-                foreach (var appuser in hotelMgtUsers)
+                foreach (var appUser in hotelMgtUsers)
                 {
-                    await userManager.CreateAsync(appuser, "Password@123");
-                    await userManager.AddToRoleAsync(appuser, "Customer");
+                    appUser.EmailConfirmed = true;
+                    appUser.PhoneNumberConfirmed = true;
+                    await userManager.CreateAsync(appUser, "Password@123");
+                    await userManager.AddToRoleAsync(appUser, "Customer");
                 }
             }
 
@@ -100,15 +106,6 @@ namespace HotelMgt.Data.Seeder
 
                 var ratings = JsonConvert.DeserializeObject<List<Rating>>(path);
                 await dbContext.Ratings.AddRangeAsync(ratings);
-            }
-
-            // Reviews
-            if (!dbContext.Reviews.Any())
-            {
-                var path = File.ReadAllText(baseDir + @"/jsons/reviews.json");
-
-                var reviews = JsonConvert.DeserializeObject<List<Review>>(path);
-                await dbContext.Reviews.AddRangeAsync(reviews);
             }
 
             // Roomtypes and rooms

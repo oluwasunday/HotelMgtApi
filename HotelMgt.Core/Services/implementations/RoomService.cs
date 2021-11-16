@@ -7,6 +7,7 @@ using HotelMgt.Models;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace hotel_booking_core.Services
@@ -66,11 +67,8 @@ namespace hotel_booking_core.Services
         {
             Room room = _mapper.Map<Room>(roomDto);
 
-            if(room != null)
+            if(GetRoomByNo(room.RoomNo).Succeeded == false)
             {
-                room.Id = Guid.NewGuid().ToString();
-                room.CreatedAt = DateTime.UtcNow;
-
                 await _unitOfWork.Rooms.AddAsync(room);
                 await _unitOfWork.CompleteAsync();
 
@@ -85,7 +83,40 @@ namespace hotel_booking_core.Services
                 };
                 return response;
             }
-            return Response<AddRoomResponseDto>.Fail("Not Found");
+            return Response<AddRoomResponseDto>.Fail($"Room number {room.RoomNo} already added");
+        }
+
+        public Response<Room> GetRoomByNo(string roomNo)
+        {
+            var room = _unitOfWork.Rooms.Find(x => x.RoomNo == roomNo).FirstOrDefault();
+            if(room != null)
+            {
+                return new Response<Room>()
+                {
+                    StatusCode = StatusCodes.Status200OK,
+                    Succeeded = true,
+                    Data = room,
+                    Message = "Successful"
+                };
+            }            
+            return Response<Room>.Fail("Not Found");
+        }
+
+        public async Task<Response<RoomDto>> CheckoutRooomById(string roomId)
+        {
+            var room = await _unitOfWork.Rooms.GetAsync(roomId);
+
+            if (room != null)
+            {
+                room.IsBooked = false;
+                _unitOfWork.Rooms.UpdateBookedRoom(room);
+                await _unitOfWork.CompleteAsync();
+
+                var response = _mapper.Map<RoomDto>(room);
+
+                return Response<RoomDto>.Success("success", response);
+            }
+            return Response<RoomDto>.Fail("Not Found");
         }
     }
 }

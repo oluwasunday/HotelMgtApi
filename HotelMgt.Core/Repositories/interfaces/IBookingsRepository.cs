@@ -10,5 +10,8 @@ namespace HotelMgt.Core.interfaces
 {
     public interface IBookingsRepository : IRepository<Booking>
     {
+        IQueryable<Booking> GetBookings();
+        IQueryable<Booking> GetBookingsByCustomerId(string customerId);
+        bool UpdateBooking(Booking model);
     }
 }

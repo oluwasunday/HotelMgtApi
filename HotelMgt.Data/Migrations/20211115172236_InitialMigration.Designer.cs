@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HotelMgt.Data.Migrations
 {
     [DbContext(typeof(HotelMgtDbContext))]
-    [Migration("20211011181212_relationsgipInBookingandAmenityCreated")]
-    partial class relationsgipInBookingandAmenityCreated
+    [Migration("20211115172236_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,14 +26,8 @@ namespace HotelMgt.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("BookingId")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("text");
 
                     b.Property<decimal>("Discount")
                         .HasColumnType("numeric");
@@ -48,10 +42,6 @@ namespace HotelMgt.Data.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BookingId");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Amenities");
                 });
@@ -155,6 +145,9 @@ namespace HotelMgt.Data.Migrations
                     b.Property<string>("BookingReference")
                         .HasColumnType("text");
 
+                    b.Property<string>("BookingStatus")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CheckIn")
                         .HasColumnType("timestamp without time zone");
 
@@ -170,6 +163,9 @@ namespace HotelMgt.Data.Migrations
                     b.Property<int>("NoOfPeople")
                         .HasColumnType("integer");
 
+                    b.Property<string>("RoomId")
+                        .HasColumnType("text");
+
                     b.Property<string>("ServiceName")
                         .HasColumnType("text");
 
@@ -179,6 +175,8 @@ namespace HotelMgt.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("Bookings");
                 });
@@ -216,8 +214,8 @@ namespace HotelMgt.Data.Migrations
                     b.Property<string>("MethodOfPayment")
                         .HasColumnType("text");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("text");
+                    b.Property<bool>("Status")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("TransactionReference")
                         .HasColumnType("text");
@@ -233,6 +231,9 @@ namespace HotelMgt.Data.Migrations
             modelBuilder.Entity("HotelMgt.Models.Rating", b =>
                 {
                     b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Comment")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
@@ -252,30 +253,6 @@ namespace HotelMgt.Data.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Ratings");
-                });
-
-            modelBuilder.Entity("HotelMgt.Models.Review", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Comment")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("HotelMgt.Models.Room", b =>
@@ -310,9 +287,6 @@ namespace HotelMgt.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("BookingId")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
 
@@ -335,8 +309,6 @@ namespace HotelMgt.Data.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BookingId");
 
                     b.ToTable("RoomTypes");
                 });
@@ -471,19 +443,31 @@ namespace HotelMgt.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HotelMgt.Models.Amenity", b =>
+            modelBuilder.Entity("hotel_booking_models.Gallery", b =>
                 {
-                    b.HasOne("HotelMgt.Models.Booking", "Booking")
-                        .WithMany("Amenities")
-                        .HasForeignKey("BookingId");
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
-                    b.HasOne("HotelMgt.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.Navigation("Booking");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
 
-                    b.Navigation("Customer");
+                    b.Property<bool>("IsFeature")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("RoomId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Galleries");
                 });
 
             modelBuilder.Entity("HotelMgt.Models.Booking", b =>
@@ -492,7 +476,13 @@ namespace HotelMgt.Data.Migrations
                         .WithMany("Bookings")
                         .HasForeignKey("CustomerId");
 
+                    b.HasOne("HotelMgt.Models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId");
+
                     b.Navigation("Customer");
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("HotelMgt.Models.Customer", b =>
@@ -526,15 +516,6 @@ namespace HotelMgt.Data.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("HotelMgt.Models.Review", b =>
-                {
-                    b.HasOne("HotelMgt.Models.Customer", "Customer")
-                        .WithMany("Reviews")
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("Customer");
-                });
-
             modelBuilder.Entity("HotelMgt.Models.Room", b =>
                 {
                     b.HasOne("HotelMgt.Models.RoomType", "Roomtype")
@@ -542,15 +523,6 @@ namespace HotelMgt.Data.Migrations
                         .HasForeignKey("RoomTypeId");
 
                     b.Navigation("Roomtype");
-                });
-
-            modelBuilder.Entity("HotelMgt.Models.RoomType", b =>
-                {
-                    b.HasOne("HotelMgt.Models.Booking", "Booking")
-                        .WithMany("RoomTypes")
-                        .HasForeignKey("BookingId");
-
-                    b.Navigation("Booking");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -604,6 +576,15 @@ namespace HotelMgt.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("hotel_booking_models.Gallery", b =>
+                {
+                    b.HasOne("HotelMgt.Models.Room", "Room")
+                        .WithMany("Galleries")
+                        .HasForeignKey("RoomId");
+
+                    b.Navigation("Room");
+                });
+
             modelBuilder.Entity("HotelMgt.Models.AppUser", b =>
                 {
                     b.Navigation("Customer");
@@ -611,11 +592,7 @@ namespace HotelMgt.Data.Migrations
 
             modelBuilder.Entity("HotelMgt.Models.Booking", b =>
                 {
-                    b.Navigation("Amenities");
-
                     b.Navigation("Payment");
-
-                    b.Navigation("RoomTypes");
                 });
 
             modelBuilder.Entity("HotelMgt.Models.Customer", b =>
@@ -623,8 +600,11 @@ namespace HotelMgt.Data.Migrations
                     b.Navigation("Bookings");
 
                     b.Navigation("Ratings");
+                });
 
-                    b.Navigation("Reviews");
+            modelBuilder.Entity("HotelMgt.Models.Room", b =>
+                {
+                    b.Navigation("Galleries");
                 });
 
             modelBuilder.Entity("HotelMgt.Models.RoomType", b =>

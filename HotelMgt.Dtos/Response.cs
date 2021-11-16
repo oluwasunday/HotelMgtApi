@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace HotelMgt.Dtos
 {
@@ -28,13 +29,13 @@ namespace HotelMgt.Dtos
         /// </summary>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
-        public static Response<T> Fail(string errorMessage)
+        public static Response<T> Fail(string errorMessage, int statusCode = StatusCodes.Status404NotFound)
         {
-            return new Response<T> { Succeeded = false, Message = errorMessage };
+            return new Response<T> { Succeeded = false, Message = errorMessage, StatusCode = statusCode };
         }
-        public static Response<T> Success(T data)
+        public static Response<T> Success(string successMessage, T data, int statusCode = StatusCodes.Status200OK)
         {
-            return new Response<T> { Succeeded = true, Data = data };
+            return new Response<T> { Succeeded = true, Message = successMessage, Data = data, StatusCode = statusCode };
         }
         public override string ToString() => JsonConvert.SerializeObject(this);
        

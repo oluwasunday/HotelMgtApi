@@ -121,3 +121,12 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.AspNetCore.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Sinks.Console.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Sinks.File.dll

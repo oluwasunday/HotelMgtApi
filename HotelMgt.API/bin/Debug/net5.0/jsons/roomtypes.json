@@ -1,34 +1,69 @@
 [
   {
     "Id": "2acc0b3d-9fbb-4d3a-af0e-acc88a84f30c",
-    "Name": "Meghan Meadows",
-    "Description": "Nostrud adipisicing exercitation incididunt commodo do proident ea Lorem exercitation nisi nulla. Nostrud ullamco duis nulla elit enim. Occaecat incididunt irure dolore laborum consectetur incididunt elit mollit enim. Adipisicing sit consectetur laboris eiusmod.\r\n",
+    "Name": "Single",
+    "Description": "Nostrud adipisicing exercitation incididunt\r\n",
     "Price": 24959.34,
-    "Discount": 15.82,
+    "Discount": 0.82,
     "CreatedAt": "2020-12-31T03:07:16 -01:00",
     "UpdatedAt": "2021-05-31T12:59:07 -01:00",
     "Rooms": [
       {
         "Id": "8e618e1c-19e4-4984-bd6a-05049255fae5",
-        "RoomNo": "125",
+        "RoomNo": "101",
         "IsBooked": true,
         "CreatedAt": "2020-02-19T10:01:31 -01:00",
         "UpdatedAt": "2021-07-09T05:33:54 -01:00"
+      },
+      {
+        "Id": "d485a35c-3dc4-4cd3-b058-07e1e26db3ac",
+        "RoomNo": "102",
+        "IsBooked": false,
+        "CreatedAt": "2020-03-24T01:58:48 -01:00",
+        "UpdatedAt": "2021-03-23T11:34:40 -01:00"
+      },
+      {
+        "Id": "ba92116f-d92c-4e3b-90e2-d483005f3245",
+        "RoomNo": "103",
+        "IsBooked": true,
+        "CreatedAt": "2020-11-21T03:51:13 -01:00",
+        "UpdatedAt": "2021-02-15T06:58:50 -01:00"
+      },
+      {
+        "Id": "ef729fe9-6115-4b9e-8d37-db1abec638e7",
+        "RoomNo": "104",
+        "IsBooked": true,
+        "CreatedAt": "2021-06-22T08:04:50 -01:00",
+        "UpdatedAt": "2021-07-08T10:26:01 -01:00"
+      },
+      {
+        "Id": "6b0dd6c2-cd25-482c-a47c-f594d543e2d7",
+        "RoomNo": "105",
+        "IsBooked": true,
+        "CreatedAt": "2021-03-19T07:58:59 -01:00",
+        "UpdatedAt": "2021-01-06T11:30:10 -01:00"
+      },
+      {
+        "Id": "8d3691c8-1c46-4242-a034-78299b3fc930",
+        "RoomNo": "106",
+        "IsBooked": true,
+        "CreatedAt": "2020-04-04T01:36:16 -01:00",
+        "UpdatedAt": "2021-01-07T07:21:10 -01:00"
       }
     ]
   },
   {
     "Id": "90d80308-9543-4e14-9311-d68be98874c0",
-    "Name": "Cantu Murray",
-    "Description": "Labore sunt nisi sint non aliqua anim laboris voluptate consequat velit ut magna mollit. Culpa nulla consequat eu dolore aliqua mollit aliqua sunt ea quis ut labore deserunt Lorem. Quis aliquip aliqua duis cupidatat esse elit laboris deserunt consequat laborum labore pariatur aliquip voluptate. Culpa aliquip est occaecat est Lorem ipsum occaecat exercitation. Enim excepteur ea ullamco irure ut adipisicing. Aliqua ad qui exercitation esse laboris.\r\n",
+    "Name": "Double",
+    "Description": "Labore sunt nisi sint.\r\n",
     "Price": 3750.11,
-    "Discount": 25.77,
+    "Discount": 0.77,
     "CreatedAt": "2020-06-01T04:10:05 -01:00",
     "UpdatedAt": "2021-07-17T12:55:27 -01:00",
     "Rooms": [
       {
         "Id": "bcfe48a9-8cf2-4b81-ae7b-9e76a8794122",
-        "RoomNo": "165",
+        "RoomNo": "201",
         "IsBooked": false,
         "CreatedAt": "2021-08-13T11:32:05 -01:00",
         "UpdatedAt": "2021-04-04T04:35:15 -01:00"
@@ -37,16 +72,16 @@
   },
   {
     "Id": "6c47a21e-d66e-4cae-a562-b69882d90a63",
-    "Name": "Reynolds Bell",
-    "Description": "Aute aliqua deserunt nisi fugiat esse. Aute in commodo duis mollit excepteur eiusmod commodo proident ut qui esse nulla. Fugiat exercitation est in aute cillum ex reprehenderit incididunt. Ullamco exercitation exercitation aliquip dolor non.\r\n",
+    "Name": "Kings&Queens",
+    "Description": "Aute aliqua deserunt nisi.\r\n",
     "Price": 22949.04,
-    "Discount": 15.84,
+    "Discount": 0.04,
     "CreatedAt": "2020-09-17T12:34:03 -01:00",
     "UpdatedAt": "2021-01-29T02:40:18 -01:00",
     "Rooms": [
       {
         "Id": "ea6742f6-b803-4412-ae3b-c8e6dcefa1ca",
-        "RoomNo": "259",
+        "RoomNo": "301",
         "IsBooked": false,
         "CreatedAt": "2021-07-03T05:19:57 -01:00",
         "UpdatedAt": "2021-05-01T09:00:24 -01:00"
@@ -55,16 +90,16 @@
   },
   {
     "Id": "21182b1e-22fe-4546-b465-9cccf0f9495b",
-    "Name": "Francis Newton",
-    "Description": "Ad magna dolor pariatur magna sunt ea. Cupidatat eu incididunt enim quis nostrud aute adipisicing eu tempor quis ut officia. Dolore voluptate excepteur in esse incididunt cupidatat. Cupidatat nisi culpa minim cillum excepteur mollit velit occaecat labore sit aliqua ad. Mollit enim aute ullamco ex labore minim ullamco incididunt aute laboris. Consectetur eiusmod ullamco exercitation est excepteur pariatur.\r\n",
+    "Name": "Executive",
+    "Description": "Ad magna dolor pariatur magna sunt ea.\r\n",
     "Price": 10485.19,
-    "Discount": 30.72,
+    "Discount": 0.02,
     "CreatedAt": "2020-02-13T05:07:49 -01:00",
     "UpdatedAt": "2021-08-25T06:03:36 -01:00",
     "Rooms": [
       {
         "Id": "6409f883-f7d0-4fa7-9607-f1193ebc587e",
-        "RoomNo": "111",
+        "RoomNo": "401",
         "IsBooked": false,
         "CreatedAt": "2020-07-21T12:41:29 -01:00",
         "UpdatedAt": "2021-09-24T09:14:59 -01:00"
@@ -73,109 +108,19 @@
   },
   {
     "Id": "ac831832-9602-454e-9811-d07c3547f47b",
-    "Name": "Dodson Cline",
-    "Description": "Fugiat ipsum occaecat elit ut deserunt adipisicing ipsum mollit adipisicing amet cupidatat non. Aute sit consequat culpa ad esse pariatur quis. Mollit sunt laboris qui aliquip do irure veniam quis excepteur esse adipisicing aute ullamco. Ullamco labore ut veniam ut nulla. Id sunt ullamco proident Lorem cupidatat irure sit tempor nisi consequat dolor tempor laboris.\r\n",
+    "Name": "Villa",
+    "Description": "Fugiat ipsum occaecat elit ut deserunt.\r\n",
     "Price": 19805.54,
-    "Discount": 18.53,
+    "Discount": 0.03,
     "CreatedAt": "2020-02-16T09:00:35 -01:00",
     "UpdatedAt": "2021-04-26T04:06:08 -01:00",
     "Rooms": [
       {
         "Id": "d38ccb70-cf26-4bea-8c33-6e1869419112",
-        "RoomNo": "116",
+        "RoomNo": "601",
         "IsBooked": false,
         "CreatedAt": "2021-05-05T08:50:55 -01:00",
         "UpdatedAt": "2021-01-20T12:50:46 -01:00"
-      }
-    ]
-  },
-  {
-    "Id": "ac425503-f386-4a24-87cb-29b17dd4ea39",
-    "Name": "Morgan Malone",
-    "Description": "Adipisicing magna exercitation enim eiusmod amet amet et veniam. Magna ex sit occaecat commodo sunt. In nostrud enim ullamco aliquip veniam ullamco mollit reprehenderit adipisicing occaecat dolore ad anim sunt. Reprehenderit fugiat mollit anim ex. Qui incididunt ea dolore quis quis nulla ea nisi in. Excepteur adipisicing cupidatat ea magna eu. Consequat incididunt nulla proident duis.\r\n",
-    "Price": 1775.26,
-    "Discount": 24.59,
-    "CreatedAt": "2020-07-24T08:42:23 -01:00",
-    "UpdatedAt": "2021-02-28T12:04:52 -01:00",
-    "Rooms": [
-      {
-        "Id": "d485a35c-3dc4-4cd3-b058-07e1e26db3ac",
-        "RoomNo": "345",
-        "IsBooked": false,
-        "CreatedAt": "2020-03-24T01:58:48 -01:00",
-        "UpdatedAt": "2021-03-23T11:34:40 -01:00"
-      }
-    ]
-  },
-  {
-    "Id": "a9967eae-f546-4cbb-920a-ccb1555565db",
-    "Name": "Barlow Johnson",
-    "Description": "Deserunt labore reprehenderit dolor anim elit minim sunt qui mollit nisi. Occaecat dolore eiusmod laborum velit cupidatat. Aliqua id incididunt consectetur nostrud laborum laboris ad exercitation minim laboris aliqua dolore incididunt. Nulla pariatur anim amet consectetur sunt pariatur veniam velit quis laboris magna proident deserunt dolor. Eiusmod eiusmod anim veniam deserunt nulla. Ipsum fugiat incididunt ex dolor ex occaecat.\r\n",
-    "Price": 22034.22,
-    "Discount": 10.15,
-    "CreatedAt": "2020-05-04T07:21:15 -01:00",
-    "UpdatedAt": "2021-03-13T10:21:28 -01:00",
-    "Rooms": [
-      {
-        "Id": "ba92116f-d92c-4e3b-90e2-d483005f3245",
-        "RoomNo": "287",
-        "IsBooked": true,
-        "CreatedAt": "2020-11-21T03:51:13 -01:00",
-        "UpdatedAt": "2021-02-15T06:58:50 -01:00"
-      }
-    ]
-  },
-  {
-    "Id": "6c8dc0c6-bcde-4076-9675-20b111444b31",
-    "Name": "Jane Decker",
-    "Description": "Sint Lorem adipisicing aliquip anim. Dolore excepteur nisi aliquip proident esse labore fugiat eu. Cillum tempor nostrud esse fugiat ut ea amet duis incididunt irure elit nisi esse sunt.\r\n",
-    "Price": 4081.94,
-    "Discount": 11.76,
-    "CreatedAt": "2021-02-26T01:01:02 -01:00",
-    "UpdatedAt": "2021-01-01T08:27:43 -01:00",
-    "Rooms": [
-      {
-        "Id": "ef729fe9-6115-4b9e-8d37-db1abec638e7",
-        "RoomNo": "293",
-        "IsBooked": true,
-        "CreatedAt": "2021-06-22T08:04:50 -01:00",
-        "UpdatedAt": "2021-07-08T10:26:01 -01:00"
-      }
-    ]
-  },
-  {
-    "Id": "8a93c83b-0a17-430b-bfe2-2fc2978fea59",
-    "Name": "Preston Guy",
-    "Description": "Occaecat eu excepteur ut sint ad deserunt occaecat velit sit ullamco. Tempor qui pariatur consectetur quis ex. Duis culpa officia sit est est qui adipisicing sunt irure deserunt. Dolor exercitation quis ex adipisicing ex. Dolore aliquip deserunt nostrud magna id adipisicing consectetur. Et officia eu aliquip consectetur cillum cillum et occaecat laboris adipisicing consequat.\r\n",
-    "Price": 10510.31,
-    "Discount": 26.8,
-    "CreatedAt": "2020-02-12T10:43:26 -01:00",
-    "UpdatedAt": "2021-09-04T11:04:24 -01:00",
-    "Rooms": [
-      {
-        "Id": "6b0dd6c2-cd25-482c-a47c-f594d543e2d7",
-        "RoomNo": "214",
-        "IsBooked": true,
-        "CreatedAt": "2021-03-19T07:58:59 -01:00",
-        "UpdatedAt": "2021-01-06T11:30:10 -01:00"
-      }
-    ]
-  },
-  {
-    "Id": "573f9b21-406b-4f8b-b775-a28381f3125f",
-    "Name": "Eula Miles",
-    "Description": "Est elit proident commodo aliquip eiusmod duis. Cupidatat qui aliqua exercitation enim officia dolore sit adipisicing. Lorem occaecat voluptate fugiat minim laborum laborum consequat officia sit laboris. Laborum nulla eu aliqua adipisicing ex. Lorem est ut laboris duis. Occaecat commodo tempor ipsum nulla qui laborum ullamco non magna ut enim.\r\n",
-    "Price": 39284.1,
-    "Discount": 33.36,
-    "CreatedAt": "2020-08-06T04:57:14 -01:00",
-    "UpdatedAt": "2021-05-26T01:21:45 -01:00",
-    "Rooms": [
-      {
-        "Id": "8d3691c8-1c46-4242-a034-78299b3fc930",
-        "RoomNo": "193",
-        "IsBooked": true,
-        "CreatedAt": "2020-04-04T01:36:16 -01:00",
-        "UpdatedAt": "2021-01-07T07:21:10 -01:00"
       }
     ]
   }

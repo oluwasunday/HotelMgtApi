@@ -11,7 +11,10 @@ namespace HotelMgt.Core.UnitOfWork.abstractions
         IRoomRepository Rooms { get; }
         IBookingsRepository Bookings { get; }
         IRatingRepository Ratings { get; }
-        IReviewRepository Reviews { get; }
+        IAmenityRepository Amenities { get; }
+        IRoomTypeRepository RoomTypes { get; }
+        IGalleryRepository Galleries { get; }
+        IPaymentRepository Payments { get; }
         Task CompleteAsync();
     }
 }
