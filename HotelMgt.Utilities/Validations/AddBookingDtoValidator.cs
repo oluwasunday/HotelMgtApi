@@ -12,9 +12,6 @@ namespace HotelMgt.Utilities.Validations
     {
         public AddBookingDtoValidator()
         {
-            RuleFor(x => x.BookingReference)
-                .NotEmpty().WithMessage("Booking reference is required")
-                .NotNull().WithMessage("Booking reference is required");
             RuleFor(x => x.CheckIn)
                 .NotEmpty()
                 .NotNull()

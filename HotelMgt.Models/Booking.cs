@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace HotelMgt.Models
 {
@@ -11,8 +10,10 @@ namespace HotelMgt.Models
         public DateTime CheckOut { get; set; }
         public int NoOfPeople { get; set; }
         public string ServiceName { get; set; }
+        public string BookingStatus { get; set; } = "Failed";
         public Customer Customer { get; set; }
         public Payment Payment { get; set; }
-        public ICollection<RoomType> RoomTypes { get; set; }
+        public string RoomId { get; set; }
+        public Room Room { get; set; }
     }
 }

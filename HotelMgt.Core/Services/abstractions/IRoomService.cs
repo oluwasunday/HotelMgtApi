@@ -12,5 +12,6 @@ namespace HotelMgt.Core.Services.abstractions
         Task<Response<AddRoomResponseDto>> AddRoom(AddRoomDto roomDto);
         Response<List<RoomDto>> GetRoooms();
         Response<Room> GetRoomByNo(string roomNo);
+        Task<Response<RoomDto>> CheckoutRooomById(string roomId);
     }
 }

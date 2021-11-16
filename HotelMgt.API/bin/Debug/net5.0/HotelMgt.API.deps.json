@@ -35,7 +35,7 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "CloudinaryDotNet": "1.15.2",
-          "FluentValidation": "10.3.3",
+          "FluentValidation.AspNetCore": "10.3.4",
           "HotelMgt.Core": "1.0.0",
           "HotelMgt.Data": "1.0.0",
           "HotelMgt.Models": "1.0.0",
@@ -53,6 +53,7 @@
           "NLog.Web.AspNetCore": "4.14.0",
           "Newtonsoft.Json": "13.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.10",
+          "Paystack.Net": "0.7.7",
           "Serilog": "2.10.0",
           "Serilog.AspNetCore": "4.1.0",
           "Serilog.Settings.Configuration": "3.3.0",
@@ -388,15 +389,45 @@
           "lib/netstandard2.0/CloudinaryDotNet.dll": {}
         }
       },
-      "FluentValidation/10.3.3": {
+      "FluentValidation/10.3.4": {
         "runtime": {
           "lib/net5.0/FluentValidation.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "10.3.3.0"
+            "fileVersion": "10.3.4.0"
           }
         },
         "compile": {
           "lib/net5.0/FluentValidation.dll": {}
+        }
+      },
+      "FluentValidation.AspNetCore/10.3.4": {
+        "dependencies": {
+          "FluentValidation": "10.3.4",
+          "FluentValidation.DependencyInjectionExtensions": "10.3.4"
+        },
+        "runtime": {
+          "lib/net5.0/FluentValidation.AspNetCore.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "10.3.4.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/FluentValidation.AspNetCore.dll": {}
+        }
+      },
+      "FluentValidation.DependencyInjectionExtensions/10.3.4": {
+        "dependencies": {
+          "FluentValidation": "10.3.4",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "10.3.4.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -1031,6 +1062,20 @@
         },
         "compile": {
           "lib/netstandard2.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        }
+      },
+      "Paystack.Net/0.7.7": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PayStack.Net.dll": {
+            "assemblyVersion": "0.7.7.0",
+            "fileVersion": "0.7.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/PayStack.Net.dll": {}
         }
       },
       "Portable.BouncyCastle/1.8.5": {
@@ -1858,6 +1903,7 @@
           "NETCore.MailKit": "2.0.3",
           "Newtonsoft.Json": "13.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.10",
+          "Paystack.Net": "0.7.7",
           "Serilog": "2.10.0",
           "Serilog.AspNetCore": "4.1.0",
           "Serilog.Settings.Configuration": "3.3.0",
@@ -1930,7 +1976,7 @@
       "HotelMgt.Utilities/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
-          "FluentValidation": "10.3.3",
+          "FluentValidation": "10.3.4",
           "HotelMgt.Dtos": "1.0.0",
           "HotelMgt.Models": "1.0.0",
           "Serilog.AspNetCore": "4.1.0",
@@ -3610,12 +3656,26 @@
       "path": "cloudinarydotnet/1.15.2",
       "hashPath": "cloudinarydotnet.1.15.2.nupkg.sha512"
     },
-    "FluentValidation/10.3.3": {
+    "FluentValidation/10.3.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sgRC+7q4mnmDHE9ehk2cvb+FDTy/gtw5iBoKFY3FVp1ZwFsLS0kIcdSpNlCO3XyyNIzZI2ca8I/YiFG9pM6x0Q==",
-      "path": "fluentvalidation/10.3.3",
-      "hashPath": "fluentvalidation.10.3.3.nupkg.sha512"
+      "sha512": "sha512-hsGRtnhTlCrRbxIOkKp6rCBtkq3UV0i31ckcJtd5j1i99zqLgbQGcbxK0SMU63DIto94f++uIdRpoycu8ySnDQ==",
+      "path": "fluentvalidation/10.3.4",
+      "hashPath": "fluentvalidation.10.3.4.nupkg.sha512"
+    },
+    "FluentValidation.AspNetCore/10.3.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YxJ6YH8Oh/DIyHHbjLdQkITGpksihDbznqEbKJy+uPfphdWwtlzaVSx1XyLotSj/bkPXOdLL8w5FPh1TA0Acpw==",
+      "path": "fluentvalidation.aspnetcore/10.3.4",
+      "hashPath": "fluentvalidation.aspnetcore.10.3.4.nupkg.sha512"
+    },
+    "FluentValidation.DependencyInjectionExtensions/10.3.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LS0opGF4r/upI92Y+bToBzFqHYrfuHDWz9z9DN2hUn+/tmt9lN8n0bevyswabdKlTwL6s8vMhVQxHXM8wjOAbQ==",
+      "path": "fluentvalidation.dependencyinjectionextensions/10.3.4",
+      "hashPath": "fluentvalidation.dependencyinjectionextensions.10.3.4.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
@@ -4085,6 +4145,13 @@
       "sha512": "sha512-3K+YNZFdwMcTxY8aW9m6BHyzPce/WFdDKPESP4uCXk6xNS6Ujq6zhi7+KXkzb7iNB0OYretEuF3ezqkk4ZnJMg==",
       "path": "npgsql.entityframeworkcore.postgresql/5.0.10",
       "hashPath": "npgsql.entityframeworkcore.postgresql.5.0.10.nupkg.sha512"
+    },
+    "Paystack.Net/0.7.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WmSdOg65sXZnIEU/ZGe8D/NGESwNyCEoynYliczeErafYpiXqO8R1JOCg1pHwSNOFVvSvriXxDtsiBKBfe2/VA==",
+      "path": "paystack.net/0.7.7",
+      "hashPath": "paystack.net.0.7.7.nupkg.sha512"
     },
     "Portable.BouncyCastle/1.8.5": {
       "type": "package",

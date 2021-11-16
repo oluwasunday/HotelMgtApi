@@ -19,6 +19,7 @@ using HotelMgt.Utilities.Settings;
 using HotelMgt.Utilities.Validations;
 using HotelMgt.Utilities.Validations.AmenityValidators;
 using HotelMgt.Utilities.Validations.AuthenticationValidators;
+using HotelMgt.Utilities.Validations.RatingValidators;
 using HotelMgt.Utilities.Validations.ReviewValidations;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -41,11 +42,11 @@ namespace HotelMgt.API.Extensions
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IRatingService, RatingService>();
-            services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IAmenityService, AmenityService>();
             services.AddScoped<IRoomTypeService, RoomTypeService>();
             services.AddScoped<IImageService, ImageService>();
             services.AddScoped<IGalleryService, GalleryService>();
+            services.AddScoped<IPaymentService, PaymentService>();
 
             // Add Fluent Validator Injections Here
             services.AddTransient<IValidator<AddCustomerDto>, AddCustomerDtoValidator>();
@@ -58,6 +59,7 @@ namespace HotelMgt.API.Extensions
             services.AddTransient<IValidator<ResetPasswordDto>, ResetPasswordValidatorDto>();
             services.AddTransient<IValidator<AddAmenityDto>, AddAmenityDtoValidator>();
             services.AddTransient<IValidator<UpdateAmenityDto>, UpdateAmenityDtoValidator>();
+            services.AddTransient<IValidator<AddRatingsDto>, AddRatingsDtoValidator>();
 
             // Authentication
             services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();

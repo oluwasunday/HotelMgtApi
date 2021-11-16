@@ -14,6 +14,6 @@ namespace HotelMgt.Core.Services.abstractions
         Task<Response<AddRatingResponseDto>> GetRatingById(string id);
         Task<Response<double>> GetRatingsAverageByCustomer(string customerId);
         Task<Response<AddRatingResponseDto>> UpdateRating(UpdateRatingDto ratingDto);
-        Task<Response<AddRatingResponseDto>> AddRatings(AddRatingsDto ratingsDto);
+        Task<Response<AddRatingResponseDto>> AddRatings(string userId, AddRatingsDto ratingsDto);
     }
 }

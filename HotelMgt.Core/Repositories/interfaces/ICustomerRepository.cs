@@ -9,6 +9,7 @@ namespace HotelMgt.Core.interfaces
 {
     public interface ICustomerRepository : IRepository<Customer>
     {
+        Task<Customer> GetCustomerAsync(string customerId);
         IEnumerable<Booking> GetTopCustomers(int count);
 
     }

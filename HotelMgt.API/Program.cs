@@ -14,8 +14,8 @@ namespace HotelMgt.API
     {
         public static void Main(string[] args)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional:false, reloadOnChange: true).Build();
+            //IConfigurationRoot configuration = new ConfigurationBuilder()
+            //    .AddJsonFile("appsettings.json", optional:false, reloadOnChange: true).Build();
 
             CreateHostBuilder(args).Build().Run();
         }
@@ -24,7 +24,7 @@ namespace HotelMgt.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>().UseSerilog();
+                    webBuilder.UseStartup<Startup>();//.UseSerilog();
                 });
     }
 }

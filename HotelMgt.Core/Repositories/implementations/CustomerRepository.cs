@@ -26,5 +26,15 @@ namespace HotelMgt.Core
                 .Take(count)
                 .Include(b => b.Customer).ToList();
         }
+
+        public async Task<Customer> GetCustomerAsync(string customerId)
+        {
+            var customer = await _context.Customers.Where(x => x.AppUserId == customerId)
+                .Include(y => y.AppUser)
+                .Include(y => y.Ratings)
+                .FirstOrDefaultAsync();
+
+            return customer;
+        }
     }
 }

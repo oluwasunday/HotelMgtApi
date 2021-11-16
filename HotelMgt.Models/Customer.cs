@@ -16,7 +16,6 @@ namespace HotelMgt.Models
         public string State { get; set; }
         public AppUser AppUser { get; set; }
         public ICollection<Booking> Bookings { get; set; }
-        public ICollection<Review> Reviews { get; set; }
         public ICollection<Rating> Ratings { get; set; }
     }
 }

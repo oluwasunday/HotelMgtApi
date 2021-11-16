@@ -22,32 +22,11 @@ namespace HotelMgt.Data
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Rating> Ratings { get; set; }
-        public DbSet<Review> Reviews { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<Amenity> Amenities {  get; set; }
         public DbSet<Gallery> Galleries {  get; set; }
 
-
-        /*public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            foreach (var item in ChangeTracker.Entries<BaseModel>())
-            {
-                switch (item.State)
-                {
-                    case EntityState.Modified:
-                        item.Entity.UpdatedAt = DateTime.UtcNow;
-                        break;
-                    case EntityState.Added:
-                        item.Entity.Id = Guid.NewGuid().ToString();
-                        item.Entity.CreatedAt = DateTime.UtcNow;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            return await base.SaveChangesAsync(cancellationToken);
-        }*/
     }
 
 }

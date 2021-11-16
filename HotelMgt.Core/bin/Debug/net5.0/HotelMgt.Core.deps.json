@@ -25,6 +25,7 @@
           "NETCore.MailKit": "2.0.3",
           "Newtonsoft.Json": "13.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.10",
+          "Paystack.Net": "0.7.7",
           "Serilog": "2.10.0",
           "Serilog.AspNetCore": "4.1.0",
           "Serilog.Settings.Configuration": "3.3.0",
@@ -585,6 +586,17 @@
           "lib/netstandard2.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
             "assemblyVersion": "5.0.10.0",
             "fileVersion": "5.0.10.0"
+          }
+        }
+      },
+      "Paystack.Net/0.7.7": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PayStack.Net.dll": {
+            "assemblyVersion": "0.7.7.0",
+            "fileVersion": "0.7.7.0"
           }
         }
       },
@@ -1833,6 +1845,13 @@
       "sha512": "sha512-3K+YNZFdwMcTxY8aW9m6BHyzPce/WFdDKPESP4uCXk6xNS6Ujq6zhi7+KXkzb7iNB0OYretEuF3ezqkk4ZnJMg==",
       "path": "npgsql.entityframeworkcore.postgresql/5.0.10",
       "hashPath": "npgsql.entityframeworkcore.postgresql.5.0.10.nupkg.sha512"
+    },
+    "Paystack.Net/0.7.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WmSdOg65sXZnIEU/ZGe8D/NGESwNyCEoynYliczeErafYpiXqO8R1JOCg1pHwSNOFVvSvriXxDtsiBKBfe2/VA==",
+      "path": "paystack.net/0.7.7",
+      "hashPath": "paystack.net.0.7.7.nupkg.sha512"
     },
     "Portable.BouncyCastle/1.8.5": {
       "type": "package",
