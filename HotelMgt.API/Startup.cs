@@ -99,12 +99,10 @@ namespace HotelMgt.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
             HotelMgtDbContext dbContext, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelMgt.API v1"));
-            }
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelMgt.API v1"));
+            
 
             HotelMgtSeeder.SeedData(dbContext, userManager, roleManager).Wait();
 
