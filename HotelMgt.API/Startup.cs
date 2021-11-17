@@ -1,3 +1,4 @@
+using church_mgt_api.extensions;
 using FluentValidation.AspNetCore;
 using HotelMgt.API.Extensions;
 using HotelMgt.Core;
@@ -39,11 +40,9 @@ namespace HotelMgt.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
-            
+
             // configure entityframeworkcore with PostgreSQL database connection
-            services.AddDbContext<HotelMgtDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConfiguration"))
-                );
+            services.AddDbContextAndConfigurations(Environment, Configuration);
 
             // configure mail service
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
