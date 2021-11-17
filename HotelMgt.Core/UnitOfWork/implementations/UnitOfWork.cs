@@ -18,6 +18,7 @@ namespace HotelMgt.Core.UnitOfWork.implementations
         public IRoomTypeRepository RoomTypes { get; private set; }
         public IGalleryRepository Galleries { get; private set; }
         public IPaymentRepository Payments { get; private set; }
+        public IContactUsRepository ContactUs { get; private set; }
         private readonly HotelMgtDbContext _context;
 
         public UnitOfWork(HotelMgtDbContext context)
@@ -31,6 +32,7 @@ namespace HotelMgt.Core.UnitOfWork.implementations
             RoomTypes = new RoomTypeRepository(_context);
             Galleries = new GalleryRepository(_context);
             Payments = new PaymentRepository(_context);
+            ContactUs = new ContactUsRepository(_context);
         }
 
 

@@ -26,6 +26,7 @@ namespace HotelMgt.Data
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<Amenity> Amenities {  get; set; }
         public DbSet<Gallery> Galleries {  get; set; }
+        public DbSet<ContactUs> ContactUs {  get; set; }
 
     }
 

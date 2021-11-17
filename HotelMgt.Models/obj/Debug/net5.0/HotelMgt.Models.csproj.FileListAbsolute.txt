@@ -12,3 +12,4 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\ref\HotelMgt.Models.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.pdb
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.genruntimeconfig.cache
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Models\obj\Debug\net5.0\HotelMgt.Models.csproj.AssemblyReference.cache
