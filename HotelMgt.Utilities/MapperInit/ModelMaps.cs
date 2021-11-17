@@ -4,6 +4,7 @@ using HotelMgt.Dtos;
 using HotelMgt.Dtos.AmenityDtos;
 using HotelMgt.Dtos.AuthenticationDto;
 using HotelMgt.Dtos.BookingDtos;
+using HotelMgt.Dtos.ContactUsDtos;
 using HotelMgt.Dtos.CustomerDtos;
 using HotelMgt.Dtos.GalleryDtos;
 using HotelMgt.Dtos.RatingDtos;
@@ -74,6 +75,9 @@ namespace HotelMgt.Core.Utilities
             // gallery mappings
             CreateMap<AddGalleryDto, Gallery>().ReverseMap();
             CreateMap<Gallery, AddGalleryResponseDto>().ReverseMap();
+
+            // Contact us
+            CreateMap<ContactUs, AddContactUsDto>().ReverseMap();
         }
     }
 }

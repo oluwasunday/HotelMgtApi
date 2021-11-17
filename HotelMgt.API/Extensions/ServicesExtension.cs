@@ -47,6 +47,7 @@ namespace HotelMgt.API.Extensions
             services.AddScoped<IImageService, ImageService>();
             services.AddScoped<IGalleryService, GalleryService>();
             services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IContactUsService, ContactUsService>();
 
             // Add Fluent Validator Injections Here
             services.AddTransient<IValidator<AddCustomerDto>, AddCustomerDtoValidator>();

@@ -7,7 +7,7 @@
     "Email": "dcapron0@loc.gov",
     "Password": "Pass@123",
     "PhoneNumber": "09054332315",
-    "Gender": "Non-binary",
+    "Gender": "female",
     "Age": 36,
     "IsActive": true,
     "PublicId": null,
@@ -30,7 +30,7 @@
     "Email": "lfelder1@networkadvertising.org",
     "Password": "Pass@123",
     "PhoneNumber": "09054332345",
-    "Gender": "Polygender",
+    "Gender": "male",
     "Age": 27,
     "IsActive": true,
     "PublicId": null,
@@ -59,7 +59,14 @@
     "PublicId": null,
     "Avatar": "data:image/png;base64",
     "CreatedAt": "8/31/2021",
-    "UpdatedAt": "5/27/2021"
+    "UpdatedAt": "5/27/2021",
+    "Customer": {
+      "CreditCard": 4004433333335476,
+      "Address": "13 Darwin Pass",
+      "State": "UK",
+      "CreatedAt": "16/30/2021",
+      "UpdatedAt": "12/26/2020"
+    }
   },
   {
     "id": "810042ea-ac3c-48c0-a7a2-8a94a192aaea",
@@ -75,7 +82,14 @@
     "PublicId": null,
     "Avatar": "data:image/png",
     "CreatedAt": "10/13/2020",
-    "UpdatedAt": "7/6/2021"
+    "UpdatedAt": "7/6/2021",
+    "Customer": {
+      "CreditCard": 4003333333331176,
+      "Address": "3 Lopl Curt",
+      "State": "Landas",
+      "CreatedAt": "16/30/2021",
+      "UpdatedAt": "12/26/2020"
+    }
   },
   {
     "id": "d9b0dfd2-6c4b-47f3-ae3d-1d6cea4ad365",
@@ -91,7 +105,14 @@
     "PublicId": null,
     "Avatar": "data:image/png;base64",
     "CreatedAt": "6/12/2021",
-    "UpdatedAt": "1/29/2021"
+    "UpdatedAt": "1/29/2021",
+    "Customer": {
+      "CreditCard": 4003333333335476,
+      "Address": "3 Guilk road",
+      "State": "Los Ang",
+      "CreatedAt": "16/30/2021",
+      "UpdatedAt": "12/26/2020"
+    }
   },
   {
     "id": "ba4a08e2-62dc-4bfb-bfc9-972ce952102e",
@@ -107,7 +128,14 @@
     "PublicId": null,
     "Avatar": "data:image/png;base64",
     "CreatedAt": "12/7/2020",
-    "UpdatedAt": "6/11/2021"
+    "UpdatedAt": "6/11/2021",
+    "Customer": {
+      "CreditCard": 4003333333124576,
+      "Address": "31 Lagos road",
+      "State": "Lagos",
+      "CreatedAt": "11/30/2021",
+      "UpdatedAt": "12/26/2020"
+    }
   },
   {
     "id": "d60e65f7-738d-42d8-a960-fccaced0e4a4",
@@ -123,6 +151,13 @@
     "PublicId": null,
     "Avatar": "data:image/png;base64,I=",
     "CreatedAt": "2/5/2021",
-    "UpdatedAt": "2/19/2021"
+    "UpdatedAt": "2/19/2021",
+    "Customer": {
+      "CreditCard": 4003399933335476,
+      "Address": "12 Marina Pass",
+      "State": "Oyo",
+      "CreatedAt": "10/30/2021",
+      "UpdatedAt": "12/26/2020"
+    }
   }
 ]
