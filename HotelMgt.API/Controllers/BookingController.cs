@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace HotelMgt.API.Controllers
 {
     [ApiController]
-    [Route("api/bookings")]
+    [Route("api/[controller]")]
     public class BookingController : ControllerBase
     {
         private readonly IBookingService _bookingService;
