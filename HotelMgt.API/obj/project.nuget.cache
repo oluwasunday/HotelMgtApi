@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EF4PfSQUE6A42m1Watu19CHgj1D+LlnYCWbbZMp/TxVmCYPiJY+Ju6EjNsuHatzhAYzh4/6TJI0vKP6800vGDg==",
+  "dgSpecHash": "VUHWCaxvbEuJ/L/Caw+tqVuOyfvZaOLt7ONd3xSNi/eDwYXXfBesu/aQNytlHGv+sKqesZV8pSbVFGNuIPoc4g==",
   "success": true,
   "projectFilePath": "C:\\Users\\hp\\OneDrive\\Documents\\Portfolio\\HotelMgt\\HotelMgt.API\\HotelMgt.API.csproj",
   "expectedPackageFiles": [
@@ -67,6 +67,7 @@
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\mimekit\\2.6.0\\mimekit.2.6.0.nupkg.sha512",
