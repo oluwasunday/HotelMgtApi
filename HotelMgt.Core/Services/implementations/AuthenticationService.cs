@@ -3,10 +3,12 @@ using HotelMgt.Core.Services.abstractions;
 using HotelMgt.Dtos;
 using HotelMgt.Dtos.AuthenticationDto;
 using HotelMgt.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Linq;
 using System.Net;
@@ -25,12 +27,12 @@ namespace HotelMgt.Core.Services.implementations
         private IConfiguration _configuration;
         private readonly IImageService _imageService;
 
-        //private const string FilePath = "../HotelMgtAPI/StaticFiles/";
+        private readonly string _baseUrl = "";
 
 
         public AuthenticationService(UserManager<AppUser> userManager, IMapper mapper, 
             ITokenGeneratorService tokenGenerator, IMailService mailService,
-            IConfiguration configuration, IImageService imageService)
+            IConfiguration configuration, IImageService imageService, IWebHostEnvironment web)
         {
             _userManager = userManager;
             _mapper = mapper;
@@ -38,6 +40,7 @@ namespace HotelMgt.Core.Services.implementations
             _mailService = mailService;
             _configuration = configuration;
             _imageService = imageService;
+            _baseUrl = web.IsDevelopment() ? configuration["BaseUrl"] : configuration["HerokuUrl"];
         }
 
 
@@ -45,7 +48,7 @@ namespace HotelMgt.Core.Services.implementations
         /// Create user and add to database
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
+        /// <returns>generic response with summarise user data</returns>
         public async Task<Response<RegisterResponseDto>> RegisterUserAsync(RegisterDto model)
         {
             string errors = "";
@@ -75,7 +78,7 @@ namespace HotelMgt.Core.Services.implementations
                 var encodedEmailToken = Encoding.UTF8.GetBytes(emailToken);
                 var validEmailToken = WebEncoders.Base64UrlEncode(encodedEmailToken);
 
-                string url = $"{_configuration["AppUrl"]}api/Auth/confirmemail?email={user.Email}&token={validEmailToken}";
+                string url = $"{_baseUrl}api/Auth/confirmemail?email={user.Email}&token={validEmailToken}";
                 var mailDto = new MailRequestDto { 
                     ToEmail=user.Email, 
                     Subject="Confirm your email", 
@@ -106,6 +109,11 @@ namespace HotelMgt.Core.Services.implementations
         }
 
 
+        /// <summary>
+        /// Get user credentials and logs him/her in to the app
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Token and user id</returns>
         public async Task<Response<LoginResponseDto>> LoginUserAsync(LoginDto model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
@@ -141,7 +149,11 @@ namespace HotelMgt.Core.Services.implementations
         }
 
 
-
+        /// <summary>
+        /// gets user email and confirms the authenticity
+        /// </summary>
+        /// <param name="confirmEmailDto"></param>
+        /// <returns></returns>
         public async Task<Response<string>> ConfirmEmailAsync(ConfirmEmailDto confirmEmailDto)
         {
             var user = await _userManager.FindByEmailAsync(confirmEmailDto.Email);
@@ -210,6 +222,11 @@ namespace HotelMgt.Core.Services.implementations
                 Errors=null };
         }
 
+        /// <summary>
+        /// Resets users password 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>success</returns>
         public async Task<Response<string>> ResetPasswordAsync(ResetPasswordDto model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);

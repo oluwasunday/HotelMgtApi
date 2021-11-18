@@ -9,8 +9,8 @@ namespace HotelMgt.Core.Services.abstractions
 {
     public interface ICustomerService
     {
-        Task<Response<AddCustomerResponseDto>> AddCustomer(AddCustomerDto customerDto);
-        Task<Response<AddCustomerResponseDto>> GetCustomerById(string id);
+        Task<Response<AddCustomerResponseDto>> AddCustomerAsync(string userId, AddCustomerDto customerDto);
+        Task<Response<AddCustomerResponseDto>> GetCustomerByIdAsync(string id);
         IEnumerable<AddCustomerResponseDto> GetCustomers();
         Task<Response<string>> UpdatePhotoAsync(string userId, AddImageDto imageDto);
     }
