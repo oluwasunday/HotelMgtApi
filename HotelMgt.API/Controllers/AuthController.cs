@@ -1,9 +1,11 @@
 ﻿using HotelMgt.Core.Services.abstractions;
 using HotelMgt.Dtos.AuthenticationDto;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
 
@@ -16,19 +18,20 @@ namespace HotelMgt.API.Controllers
         private readonly IAuthenticationService _authenticationService;
         private readonly IMailService _mailService;
         private IConfiguration _configuration;
-        private readonly IImageService _imageService;
+        private readonly string _baseUrl;
 
         public AuthController(
             IAuthenticationService authenticationService, 
             IMailService mailService, 
             IConfiguration configuration,
-            IImageService imageService
+            IImageService imageService,
+            IWebHostEnvironment web
             )
         {
             _authenticationService = authenticationService;
             _mailService = mailService;
             _configuration = configuration;
-            _imageService = imageService;
+            _baseUrl = web.IsDevelopment() ? configuration["BaseUrl"] : configuration["HerokuUrl"];
         }
 
         // base-url/Auth/Login
@@ -80,7 +83,7 @@ namespace HotelMgt.API.Controllers
             {
                 var confirmEmail = new ConfirmEmailDto { Token = token, Email = email };
                 var result = await _authenticationService.ConfirmEmailAsync(confirmEmail);
-                return Redirect($"{_configuration["AppUrl"]}confirmemail.html");
+                return Redirect($"{_baseUrl}confirmemail.html");
             }
             catch (Exception ex)
             {

@@ -16,14 +16,6 @@ namespace HotelMgt.Utilities
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("address is required");
-            RuleFor(x => x.CreditCard)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("creditcard is required");
-            RuleFor(x => x.AppUserId)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage("User Id is required");
         }
     }
 }

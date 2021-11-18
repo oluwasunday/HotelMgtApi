@@ -37,7 +37,7 @@ namespace HotelMgt.API.Controllers
         [Authorize(Roles = "Manager, Admin")]
         public async Task<IActionResult> GetCustomer(string id)
         {
-            var result = await _customerService.GetCustomerById(id);
+            var result = await _customerService.GetCustomerByIdAsync(id);
             return StatusCode(result.StatusCode, result);
         }
 
@@ -53,7 +53,8 @@ namespace HotelMgt.API.Controllers
         [Authorize(Roles = "Customer, Manager, Admin")]
         public async Task<IActionResult> AddCustomer([FromBody]AddCustomerDto customerDto)
         {
-            var result = await _customerService.AddCustomer(customerDto);
+            var user = await _userManager.GetUserAsync(User);
+            var result = await _customerService.AddCustomerAsync(user.Id, customerDto);
             return StatusCode(result.StatusCode, result);
         }
 
