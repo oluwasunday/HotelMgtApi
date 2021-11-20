@@ -13,5 +13,6 @@ namespace HotelMgt.Core.Services.abstractions
         Response<List<RoomDto>> GetRoooms();
         Response<Room> GetRoomByNo(string roomNo);
         Task<Response<RoomDto>> CheckoutRooomById(string roomId);
+        Task<Response<IEnumerable<RoomDto>>> GetRooomByRoomTypeIdAsync(string roomTypeId);
     }
 }

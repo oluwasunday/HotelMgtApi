@@ -12,6 +12,7 @@ using HotelMgt.Dtos.ReviewDtos;
 using HotelMgt.Dtos.RoomDtos;
 using HotelMgt.Dtos.RoomTypeDtos;
 using HotelMgt.Models;
+using System.Linq;
 
 namespace HotelMgt.Core.Utilities
 {
@@ -55,7 +56,9 @@ namespace HotelMgt.Core.Utilities
                 .ForMember(x => x.Amount, y => y.MapFrom(z => z.Room.Roomtype.Price));
 
             // room mappings
-            CreateMap<Room, RoomDto>().ReverseMap();
+            CreateMap<Room, RoomDto>()
+                .ForMember(x => x.ImageUrl, y => y.MapFrom(z => z.Galleries.Select(n => n.ImageUrl).FirstOrDefault()))
+                .ForMember(x => x.Price, y => y.MapFrom(z => z.Roomtype.Price));
             CreateMap<Room, AddRoomDto>().ReverseMap();
             CreateMap<AddRoomResponseDto, Room>().ReverseMap();
 

@@ -90,9 +90,7 @@ namespace HotelMgt.Core.Services.implementations
                 };
 
             amenity.UpdatedAt = DateTime.UtcNow;
-            amenity.Price = amenityDto.Price;
             amenity.Name = amenityDto.Name;
-            amenity.Discount = amenityDto.Discount;
 
             _unitOfWork.Amenities.UpdateAmenity(amenity);
             await _unitOfWork.CompleteAsync();

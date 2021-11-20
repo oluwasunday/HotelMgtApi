@@ -29,5 +29,15 @@ namespace HotelMgt.Core.Repositories.implementations
                 .FirstOrDefaultAsync();
             return roomType;
         }
+
+        public async Task<RoomType> GetRoomTypeByNameAsync(string roomTypeName)
+        {
+            var roomType = await _context.RoomTypes
+                .Where(x => x.Name == roomTypeName)
+                .Include(y => y.Rooms)
+                    .ThenInclude(z => z.Galleries)
+                .FirstOrDefaultAsync();
+            return roomType;
+        }
     }
 }

@@ -43,22 +43,26 @@ namespace hotel_booking_core.Services
             return Response<RoomDto>.Fail("Not Found");
         }
 
+        public async Task<Response<IEnumerable<RoomDto>>> GetRooomByRoomTypeIdAsync(string roomTypeId)
+        {
+            var room = await _unitOfWork.Rooms.GetRoomByRoomTypeIdAsync(roomTypeId);
+
+            if (room != null)
+            {
+                var response = _mapper.Map<IEnumerable<RoomDto>>(room);
+                return Response<IEnumerable<RoomDto>>.Success("success", response);
+            }
+            return Response<IEnumerable<RoomDto>>.Fail("Not Found");
+        }
+
         public Response<List<RoomDto>> GetRoooms()
         {
-            var room = _unitOfWork.Rooms.GetAll();
+            var room = _unitOfWork.Rooms.GetAllRoom();
 
             if (room != null)
             {
                 var response = _mapper.Map<List<RoomDto>>(room);
-
-                var result = new Response<List<RoomDto>>
-                {
-                    StatusCode = StatusCodes.Status200OK,
-                    Succeeded = true,
-                    Message = $"successful",
-                    Data = response
-                };
-                return result;
+                return Response<List<RoomDto>>.Success("success", response);
             }
             return Response<List<RoomDto>>.Fail("Not Found");
         }

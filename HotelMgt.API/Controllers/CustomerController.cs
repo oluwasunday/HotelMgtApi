@@ -11,12 +11,14 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace HotelMgt.API.Controllers
 {
     [ApiController]
     [Route("api/customers")]
+    [DataContract(IsReference = true)]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerService _customerService;
@@ -59,10 +61,9 @@ namespace HotelMgt.API.Controllers
         }
 
         [HttpGet("ratings")]
-        [Authorize(Roles = "Manager, Admin")]
-        public IActionResult AllRatings()
+        public async Task<IActionResult> AllRatings()
         {
-            var result = _ratingService.GetAllRatings();
+            var result = await _ratingService.GetAllRatingsAsync();
             return StatusCode(result.StatusCode, result);
         }
 

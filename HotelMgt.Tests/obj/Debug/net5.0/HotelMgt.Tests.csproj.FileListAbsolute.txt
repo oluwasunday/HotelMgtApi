@@ -130,3 +130,4 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Sinks.Console.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\bin\Debug\net5.0\Serilog.Sinks.File.dll
+C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Tests\obj\Debug\net5.0\HotelMgt.Tests.csproj.AssemblyReference.cache

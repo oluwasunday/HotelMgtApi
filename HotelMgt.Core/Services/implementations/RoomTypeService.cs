@@ -84,5 +84,15 @@ namespace HotelMgt.Core.Services.implementations
 
             return Response<string>.Success("Updated successfully", null);
         }
+
+        public async Task<Response<RoomTypeResponseDto>> GetRoomTypeByName(string roomTypeName)
+        {
+            RoomType roomType = await _unitOfWork.RoomTypes.GetRoomTypeByNameAsync(roomTypeName);
+            if (roomType == null)
+                return Response<RoomTypeResponseDto>.Fail("Not found!");
+
+            var response = _mapper.Map<RoomTypeResponseDto>(roomType);
+            return Response<RoomTypeResponseDto>.Success("Success", response);
+        }
     }
 }

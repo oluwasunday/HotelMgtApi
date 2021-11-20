@@ -12,5 +12,7 @@ namespace HotelMgt.Dtos.RoomDtos
         public string RoomNo { get; set; }
         public bool IsBooked { get; set; }
         public string RoomType { get; set; }
+        public string ImageUrl { get; set; }
+        public decimal Price { get; set; }
     }
 }
