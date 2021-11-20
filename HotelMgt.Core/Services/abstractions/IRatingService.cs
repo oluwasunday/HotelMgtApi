@@ -8,7 +8,7 @@ namespace HotelMgt.Core.Services.abstractions
 {
     public interface IRatingService
     {
-        Response<List<AddRatingResponseDto>> GetAllRatings();
+        Task<Response<List<Rating>>> GetAllRatingsAsync();
         Response<double> GetAllRatingsAverage();
         Task<Response<List<AddRatingResponseDto>>> GetAllRatingsByCustomerId(string customerId);
         Task<Response<AddRatingResponseDto>> GetRatingById(string id);

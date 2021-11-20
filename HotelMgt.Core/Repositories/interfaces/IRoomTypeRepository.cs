@@ -7,6 +7,7 @@ namespace HotelMgt.Core.Repositories.interfaces
     public interface IRoomTypeRepository : IRepository<RoomType>
     {
         Task<RoomType> GetRoomTypeByIdAsync(string roomTypeId);
+        Task<RoomType> GetRoomTypeByNameAsync(string roomTypeName);
         void UpdateRoomType(RoomType roomType);
     }
 }

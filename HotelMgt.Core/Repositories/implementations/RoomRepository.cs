@@ -13,16 +13,27 @@ namespace HotelMgt.Core
     public class RoomRepository : Repository<Room>, IRoomRepository
     {
         private readonly HotelMgtDbContext _context;
+        private readonly DbSet<Room> _dbSet;
         public RoomRepository(HotelMgtDbContext context) : base(context)
         {
             _context = context;
+            _dbSet = _context.Set<Room>();
         }
 
         public async Task<Room> GetRoomAsync(string roomId)
         {
             var room = await _context.Rooms.Where(x => x.Id == roomId)
+                .Include(x => x.Galleries)
                 .Include(x => x.Roomtype)
                 .FirstOrDefaultAsync();
+            return room;
+        }
+
+        public IQueryable<Room> GetAllRoom()
+        {
+            var room = _dbSet.AsNoTracking()
+                .Include(x => x.Galleries)
+                .Include(y => y.Roomtype);
             return room;
         }
 
@@ -36,6 +47,16 @@ namespace HotelMgt.Core
             var room = await _context.Rooms.Where(x => x.RoomNo == roomNo)
                 .Include(x => x.Roomtype)
                 .FirstOrDefaultAsync();
+            return room;
+        }
+
+        public async Task<IEnumerable<Room>> GetRoomByRoomTypeIdAsync(string roomTypeId)
+        {
+            var room = await _context.Rooms
+                .Where(x => x.RoomTypeId == roomTypeId)
+                .Include(x => x.Galleries)
+                .Include(x => x.Roomtype)
+                .ToListAsync();
             return room;
         }
     }

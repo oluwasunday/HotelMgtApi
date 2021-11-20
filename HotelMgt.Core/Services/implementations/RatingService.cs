@@ -41,12 +41,12 @@ namespace HotelMgt.Core.Services.implementations
             return Response<AddRatingResponseDto>.Success("success", response);
         }
 
-        public Response<List<AddRatingResponseDto>> GetAllRatings()
+        public async Task<Response<List<Rating>>> GetAllRatingsAsync()
         {
-            var ratings = _unitOfWork.Ratings.GetAll().ToList();
-            var ratingRespone = _mapper.Map<List<AddRatingResponseDto>>(ratings);
+            var ratings = await _unitOfWork.Ratings.GetRatingsAsync();
+            //var ratingRespone = _mapper.Map<List<AddRatingResponseDto>>(ratings);
 
-            return Response<List<AddRatingResponseDto>>.Success("success", ratingRespone);
+            return Response<List<Rating>>.Success("success", ratings.ToList());
         }
 
         public async Task<Response<AddRatingResponseDto>> GetRatingById(string id)

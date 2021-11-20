@@ -12,5 +12,6 @@ namespace HotelMgt.Core.Services.abstractions
         Task<Response<RoomTypeResponseDto>> GetRoomType(string roomTypeId);
         Response<List<RoomTypeResponseDto>> GetAllRoomTypes();
         Task<Response<string>> UpdateRoomType(string roomTypeId, UpdateRoomTypeDto roomTypeDto);
+        Task<Response<RoomTypeResponseDto>> GetRoomTypeByName(string roomTypeName);
     }
 }

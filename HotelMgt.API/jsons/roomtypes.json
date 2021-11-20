@@ -105,23 +105,5 @@
         "UpdatedAt": "2021-09-24T09:14:59 -01:00"
       }
     ]
-  },
-  {
-    "Id": "ac831832-9602-454e-9811-d07c3547f47b",
-    "Name": "Villa",
-    "Description": "Fugiat ipsum occaecat elit ut deserunt.\r\n",
-    "Price": 19805.54,
-    "Discount": 0.03,
-    "CreatedAt": "2020-02-16T09:00:35 -01:00",
-    "UpdatedAt": "2021-04-26T04:06:08 -01:00",
-    "Rooms": [
-      {
-        "Id": "d38ccb70-cf26-4bea-8c33-6e1869419112",
-        "RoomNo": "601",
-        "IsBooked": false,
-        "CreatedAt": "2021-05-05T08:50:55 -01:00",
-        "UpdatedAt": "2021-01-20T12:50:46 -01:00"
-      }
-    ]
   }
 ]

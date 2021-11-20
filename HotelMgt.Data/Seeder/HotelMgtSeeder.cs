@@ -117,6 +117,15 @@ namespace HotelMgt.Data.Seeder
                 await dbContext.RoomTypes.AddRangeAsync(roomTypes);
             }
 
+            // Amenities
+            if (!dbContext.Amenities.Any())
+            {
+                var path = File.ReadAllText(baseDir + @"/jsons/Amenities.json");
+
+                var amenity = JsonConvert.DeserializeObject<List<Amenity>>(path);
+                await dbContext.Amenities.AddRangeAsync(amenity);
+            }
+
             await dbContext.SaveChangesAsync();
         }
     }

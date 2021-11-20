@@ -12,6 +12,6 @@ namespace HotelMgt.Core.Repositories.interfaces
         Rating UpdateRatingAsync(Rating rating);
         IEnumerable<Rating> GetRatingByCustomerId(string customerId);
         Task<Rating> UpdateRatingByCustomerIdAsync(string customerId, string ratingId, int ratingValue);
-
+        Task<IEnumerable<Rating>> GetRatingsAsync();
     }
 }
