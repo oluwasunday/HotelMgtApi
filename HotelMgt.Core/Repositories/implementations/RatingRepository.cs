@@ -1,6 +1,7 @@
 ﻿using HotelMgt.Core.Repositories.interfaces;
 using HotelMgt.Data;
 using HotelMgt.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,6 +67,15 @@ namespace HotelMgt.Core.Repositories.implementations
             }
 
             return rating;
+        }
+
+
+        public async Task<IEnumerable<Rating>> GetRatingsAsync()
+        {
+            var ratings = await _context.Ratings.AsNoTracking().ToListAsync();
+                //.Include(x => x.Customer)
+                //    .ThenInclude(y => y.AppUser)
+            return ratings;
         }
     }
 }

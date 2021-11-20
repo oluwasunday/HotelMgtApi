@@ -50,12 +50,13 @@ namespace HotelMgt.API
 
             services.AddControllers(setupAction => {
                 setupAction.ReturnHttpNotAcceptable = true;
-            }).AddXmlDataContractSerializerFormatters(); // to support XML media type
+            });
 
-            /*services.AddControllersWithViews()
-                .AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );*/
+            
+
+            services.AddControllers()
+                .AddNewtonsoftJson(op => op.SerializerSettings
+                    .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 
             // configure CORS for mail service

@@ -21,4 +21,3 @@ C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Core\bin\Debug\net5.0
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Core\bin\Debug\net5.0\HotelMgt.Dtos.pdb
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Core\bin\Debug\net5.0\HotelMgt.Utilities.dll
 C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Core\bin\Debug\net5.0\HotelMgt.Utilities.pdb
-C:\Users\hp\OneDrive\Documents\Portfolio\HotelMgt\HotelMgt.Core\obj\Debug\net5.0\HotelMgt.Core.csproj.CopyComplete
