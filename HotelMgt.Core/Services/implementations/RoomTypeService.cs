@@ -47,7 +47,7 @@ namespace HotelMgt.Core.Services.implementations
 
         public Response<List<RoomTypeResponseDto>> GetAllRoomTypes()
         {
-            var roomTypes = _unitOfWork.RoomTypes.GetAll();
+            var roomTypes = _unitOfWork.RoomTypes.GetAllRoomTypes();
             if (roomTypes == null)
                 return Response<List<RoomTypeResponseDto>>.Fail("Not content found!");
 

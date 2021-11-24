@@ -34,7 +34,7 @@ namespace HotelMgt.API.Controllers
             _baseUrl = web.IsDevelopment() ? configuration["BaseUrl"] : configuration["HerokuUrl"];
         }
 
-        // base-url/Auth/Login
+        // base-url/api/Auth/Login
         [HttpPost]
         [Route("Login")]
         [AllowAnonymous]
@@ -45,7 +45,7 @@ namespace HotelMgt.API.Controllers
         }
 
 
-        // base-url/Auth/Register
+        // base-url/api/Auth/Register
         [HttpPost]
         [Route("Register")]
         [AllowAnonymous]
@@ -55,7 +55,7 @@ namespace HotelMgt.API.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
-        // base-url/Auth/sendmail
+        // base-url/api/Auth/sendmail
         [HttpPost]
         [Route("send-mail")]
         [AllowAnonymous]
@@ -73,7 +73,7 @@ namespace HotelMgt.API.Controllers
             
         }
 
-        // base-url/Auth/confirmemail
+        // base-url/api/Auth/confirmemail
         [HttpGet]
         [Route("confirmemail")]
         [AllowAnonymous]
@@ -91,7 +91,7 @@ namespace HotelMgt.API.Controllers
             }
         }
 
-        // base-url/Auth/forget-password
+        // base-url/api/Auth/forget-password
         [HttpPost]
         [Route("forget-password")]
         [AllowAnonymous]
@@ -101,7 +101,7 @@ namespace HotelMgt.API.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
-        // base-url/Auth/reset-password
+        // base-url/api/Auth/reset-password
         [HttpPost]
         [Route("resetpassword")]
         [AllowAnonymous]

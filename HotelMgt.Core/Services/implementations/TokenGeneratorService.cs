@@ -25,10 +25,15 @@ namespace HotelMgt.Core.Services.implementations
 
         public async Task<string> GenerateToken(AppUser model)
         {
+            var avatar = model.Avatar ??= "https://cdn3.iconfinder.com/data/icons/sharp-users-vol-1/32/-_Default_Account_Avatar-512.png";
+            
             var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Email, model.Email),
-                new Claim(ClaimTypes.NameIdentifier, model.Id)
+                new Claim(ClaimTypes.NameIdentifier, model.Id),
+                new Claim(ClaimTypes.GivenName, model.FirstName),
+                new Claim(ClaimTypes.Surname, model.LastName),
+                new Claim(ClaimTypes.Uri, avatar)
             };
 
             //Gets the roles of the logged in user and adds it to Claims
