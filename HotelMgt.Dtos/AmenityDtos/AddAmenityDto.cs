@@ -12,8 +12,6 @@ namespace HotelMgt.Dtos.AmenityDtos
         [Required]
         public string Name { get; set; }
         [Required]
-        public decimal Price { get; set; }
-        [Required]
-        public decimal Discount { get; set; }
+        public string RoomTypeId { get; set; }
     }
 }

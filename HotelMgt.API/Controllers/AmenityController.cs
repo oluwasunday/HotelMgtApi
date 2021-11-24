@@ -42,8 +42,18 @@ namespace HotelMgt.API.Controllers
             return BadRequest(id);
         }
 
-        [HttpGet("")]
-        [Authorize(Roles ="Manager, Admin")]
+        [HttpGet("roomtypeid/{roomTypeId}")]
+        public async Task<IActionResult> GetAmenitiesByRoomTypeId(string roomTypeId)
+        {
+            if (roomTypeId != null)
+            {
+                var result = await _amenityService.GetAmenitiesByRoomTypeIdAsync(roomTypeId);
+                return StatusCode(result.StatusCode, result);
+            }
+            return BadRequest(roomTypeId);
+        }
+
+        [HttpGet]
         public IActionResult Amenities()
         {
             try

@@ -12,14 +12,9 @@ namespace HotelMgt.Utilities.Validations.AmenityValidators
     {
         public AddAmenityDtoValidator()
         {
-            RuleFor(x => x.Price)
-                .LessThanOrEqualTo(0.0m).WithMessage("Enter valid figure")
-                .NotEmpty().WithMessage("Price is required")
-                .NotNull().WithMessage("Price is required");
-            RuleFor(x => x.Discount)
-                .GreaterThanOrEqualTo(0.0m).WithMessage("Enter valid figure")
-                .NotEmpty().WithMessage("Discount is required")
-                .NotNull().WithMessage("Discount is required");
+            RuleFor(x => x.RoomTypeId)
+                .NotEmpty().WithMessage("Field is required")
+                .NotNull().WithMessage("Field is required");
             RuleFor(x => x.Name)
                 .NotNull().WithMessage("Name is required")
                 .NotEmpty().WithMessage("Name is required");

@@ -3,6 +3,7 @@ using HotelMgt.Core.Repositories.interfaces;
 using HotelMgt.Data;
 using HotelMgt.Dtos.AmenityDtos;
 using HotelMgt.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,14 @@ namespace HotelMgt.Core.Repositories.implementations
         public void UpdateAmenity(Amenity amenity)
         {
             _context.Amenities.Update(amenity);
+        }
+
+        public async Task<IEnumerable<Amenity>> GetAmenityByRoomTypeIdAsync(string roomtypeId)
+        {
+            var amenities = await _context.Amenities
+                .Where(x => x.RoomTypeId == roomtypeId)
+                .ToListAsync();
+            return amenities;
         }
     }
 }

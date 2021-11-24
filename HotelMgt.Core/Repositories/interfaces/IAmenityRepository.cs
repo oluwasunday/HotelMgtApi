@@ -10,6 +10,7 @@ namespace HotelMgt.Core.Repositories.interfaces
 {
     public interface IAmenityRepository : IRepository<Amenity>
     {
+        Task<IEnumerable<Amenity>> GetAmenityByRoomTypeIdAsync(string roomtypeId);
         void UpdateAmenity(Amenity amenity);
     }
 }
