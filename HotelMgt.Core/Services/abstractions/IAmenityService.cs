@@ -12,5 +12,6 @@ namespace HotelMgt.Core.Services.abstractions
         Response<List<AddAmenityResponseDto>> GetAmenities();
         Task<Response<AddAmenityResponseDto>> UpdateAmenity(string id, UpdateAmenityDto amenityDto);
         Task<Response<string>> DeleteAmenity(string id);
+        Task<Response<IEnumerable<AddAmenityResponseDto>>> GetAmenitiesByRoomTypeIdAsync(string id);
     }
 }

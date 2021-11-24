@@ -2,6 +2,7 @@
 using HotelMgt.Data;
 using HotelMgt.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,6 +39,15 @@ namespace HotelMgt.Core.Repositories.implementations
                     .ThenInclude(z => z.Galleries)
                 .FirstOrDefaultAsync();
             return roomType;
+        }
+
+        public IEnumerable<RoomType> GetAllRoomTypes()
+        {
+            var roomtypes = _context.RoomTypes
+                .Include(x => x.Amenities)
+                .Include(x => x.Rooms);
+
+            return roomtypes;
         }
     }
 }

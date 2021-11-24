@@ -128,5 +128,16 @@ namespace HotelMgt.Core.Services.implementations
                 Message = "Successfully deleted"
             };
         }
+
+
+        public async Task<Response<IEnumerable<AddAmenityResponseDto>>> GetAmenitiesByRoomTypeIdAsync(string id)
+        {
+            var amenity = await _unitOfWork.Amenities.GetAmenityByRoomTypeIdAsync(id);
+            if (amenity == null)
+                return Response<IEnumerable<AddAmenityResponseDto>>.Fail($"Failed, no amenity with the id {id} found");
+
+            var response = _mapper.Map<IEnumerable<AddAmenityResponseDto>>(amenity);
+            return Response<IEnumerable<AddAmenityResponseDto>>.Success("success", response);
+        }
     }
 }

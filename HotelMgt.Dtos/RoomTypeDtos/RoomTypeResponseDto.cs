@@ -13,5 +13,6 @@ namespace HotelMgt.Dtos.RoomTypeDtos
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public string Thumbnail { get; set; }
+        public string Description { get; set; }
     }
 }

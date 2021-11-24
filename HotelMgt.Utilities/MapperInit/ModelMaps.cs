@@ -74,6 +74,7 @@ namespace HotelMgt.Core.Utilities
             CreateMap<AddRoomTypeDto, RoomType>().ReverseMap();
             CreateMap<RoomTypeResponseDto, RoomType>().ReverseMap();
             CreateMap<UpdateRoomTypeDto, RoomType>().ReverseMap();
+            CreateMap<RoomType, RoomTypeResponseDto>().ReverseMap();
 
             // gallery mappings
             CreateMap<AddGalleryDto, Gallery>().ReverseMap();
