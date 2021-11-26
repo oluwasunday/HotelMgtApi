@@ -5,9 +5,12 @@ using HotelMgt.Models;
 using HotelMgt.Utilities.helper;
 using HotelMgt.Utilities.Paging;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -19,11 +22,16 @@ namespace HotelMgt.API.Controllers
     {
         private readonly IBookingService _bookingService;
         private readonly UserManager<AppUser> _userManager;
+        private readonly string _baseUrl = "";
 
-        public BookingController(IBookingService bookingService, UserManager<AppUser> userManager)
+        public BookingController(
+            IBookingService bookingService, 
+            UserManager<AppUser> userManager, 
+            IWebHostEnvironment web, IConfiguration config)
         {
             _bookingService = bookingService;
             _userManager = userManager;
+            _baseUrl = web.IsDevelopment() ? config["MvcBaseUrl"] : config["MvcHerokuUrl"];
         }
 
 
@@ -55,8 +63,9 @@ namespace HotelMgt.API.Controllers
         [HttpGet("verify-booking")]
         public async Task<IActionResult> VerifyBooking(string trxref, string reference)
         {
-            var result = await _bookingService.VerifyBookingAsync(reference);            
-            return StatusCode(result.StatusCode, result);
+            var result = await _bookingService.VerifyBookingAsync(reference);
+            return Redirect($"{_baseUrl}/Accomodation/SuccessBooking/");
+            //return StatusCode(result.StatusCode, result);
         }
 
 

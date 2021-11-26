@@ -61,7 +61,7 @@ namespace HotelMgt.API.Controllers
 
 
         [HttpGet("{userId}")]
-        [Authorize(Roles = "Manager, Admin")]
+        //[Authorize(Roles = "Manager, Admin")]
         public async Task<ActionResult> UserById(string userId)
         {
             try
