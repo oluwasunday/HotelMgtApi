@@ -45,7 +45,7 @@ namespace HotelMgt.Core.Repositories.implementations
         {
             var roomtypes = _context.RoomTypes
                 .Include(x => x.Amenities)
-                .Include(x => x.Rooms);
+                .Include(x => x.Rooms.Where(v => v.IsBooked == false));
 
             return roomtypes;
         }

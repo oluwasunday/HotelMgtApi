@@ -32,6 +32,7 @@ namespace HotelMgt.Core
         public IQueryable<Room> GetAllRoom()
         {
             var room = _dbSet.AsNoTracking()
+                .Where(x => x.IsBooked == false)
                 .Include(x => x.Galleries)
                 .Include(y => y.Roomtype);
             return room;
@@ -53,7 +54,7 @@ namespace HotelMgt.Core
         public async Task<IEnumerable<Room>> GetRoomByRoomTypeIdAsync(string roomTypeId)
         {
             var room = await _context.Rooms
-                .Where(x => x.RoomTypeId == roomTypeId)
+                .Where(x => x.RoomTypeId == roomTypeId && x.IsBooked == false).OrderBy(y => y.RoomNo)
                 .Include(x => x.Galleries)
                 .Include(x => x.Roomtype)
                 .ToListAsync();
