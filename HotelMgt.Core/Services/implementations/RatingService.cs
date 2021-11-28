@@ -31,9 +31,21 @@ namespace HotelMgt.Core.Services.implementations
             if (customer == null)
                 return Response<AddRatingResponseDto>.Fail("Customer not found");
 
-            Rating rating = _mapper.Map<Rating>(ratingsDto);
+            var prevRate = _unitOfWork.Ratings.GetRatingByCustomerId(userId).FirstOrDefault();
+            var responseRate = _mapper.Map<AddRatingResponseDto>(prevRate);
+            if (prevRate != null)
+            {
+                prevRate.Ratings = ratingsDto.Ratings;
+                prevRate.Comment = ratingsDto.Comment;
 
+                _unitOfWork.Ratings.UpdateRatingAsync(prevRate);
+                await _unitOfWork.CompleteAsync();
+                return Response<AddRatingResponseDto>.Success("success", responseRate);
+            }
+
+            Rating rating = _mapper.Map<Rating>(ratingsDto);
             rating.CustomerId = userId;
+
             await _unitOfWork.Ratings.AddAsync(rating);
             await _unitOfWork.CompleteAsync();
 
@@ -44,7 +56,6 @@ namespace HotelMgt.Core.Services.implementations
         public async Task<Response<List<Rating>>> GetAllRatingsAsync()
         {
             var ratings = await _unitOfWork.Ratings.GetRatingsAsync();
-            //var ratingRespone = _mapper.Map<List<AddRatingResponseDto>>(ratings);
 
             return Response<List<Rating>>.Success("success", ratings.ToList());
         }
