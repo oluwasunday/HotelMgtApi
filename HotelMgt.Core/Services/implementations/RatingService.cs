@@ -56,7 +56,6 @@ namespace HotelMgt.Core.Services.implementations
         public async Task<Response<List<Rating>>> GetAllRatingsAsync()
         {
             var ratings = await _unitOfWork.Ratings.GetRatingsAsync();
-            //var ratingRespone = _mapper.Map<List<AddRatingResponseDto>>(ratings);
 
             return Response<List<Rating>>.Success("success", ratings.ToList());
         }
