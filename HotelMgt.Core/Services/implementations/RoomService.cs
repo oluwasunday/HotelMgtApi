@@ -100,7 +100,7 @@ namespace hotel_booking_core.Services
                     StatusCode = StatusCodes.Status200OK,
                     Succeeded = true,
                     Data = room,
-                    Message = "Successful"
+                    Message = "success"
                 };
             }            
             return Response<Room>.Fail("Not Found");
@@ -121,6 +121,24 @@ namespace hotel_booking_core.Services
                 return Response<RoomDto>.Success("success", response);
             }
             return Response<RoomDto>.Fail("Not Found");
+        }
+
+        public async Task<Response<RoomDto>> CheckoutRooomByRoomNo(string roomNo)
+        {
+            var room = GetRoomByNo(roomNo);
+
+            if (room.Succeeded == true)
+            {
+                room.Data.IsBooked = false;
+                room.Data.UpdatedAt = DateTime.UtcNow;
+                _unitOfWork.Rooms.UpdateBookedRoom(room.Data);
+                await _unitOfWork.CompleteAsync();
+
+                var response = _mapper.Map<RoomDto>(room.Data);
+
+                return Response<RoomDto>.Success("success", response);
+            }
+            return Response<RoomDto>.Fail($"Room number {roomNo} not exist");
         }
     }
 }
