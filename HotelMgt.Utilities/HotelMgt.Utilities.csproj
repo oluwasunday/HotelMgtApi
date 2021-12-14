@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -14,6 +14,21 @@
   <ItemGroup>
     <ProjectReference Include="..\HotelMgt.Dtos\HotelMgt.Dtos.csproj" />
     <ProjectReference Include="..\HotelMgt.Models\HotelMgt.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="InfoFile.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>InfoFile.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="InfoFile.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InfoFile.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
