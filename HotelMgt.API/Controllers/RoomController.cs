@@ -149,5 +149,13 @@ namespace HotelMgt.API.Controllers
             var result = await _roomService.CheckoutRooomById(roomId);
             return StatusCode(result.StatusCode, result);
         }
+
+        [HttpPatch("roomno/{roomNo}/checkout")]
+        [Authorize(Roles = "Admin, Manager")]
+        public async Task<IActionResult> CheckoutByRoomNo(string roomNo)
+        {
+            var result = await _roomService.CheckoutRooomByRoomNo(roomNo);
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }

@@ -4,6 +4,7 @@ using HotelMgt.Core.UnitOfWork.abstractions;
 using HotelMgt.Dtos;
 using HotelMgt.Dtos.RatingDtos;
 using HotelMgt.Models;
+using HotelMgt.Utilities;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace HotelMgt.Core.Services.implementations
         {
             Customer customer = await _unitOfWork.Customers.GetAsync(userId);
             if (customer == null)
-                return Response<AddRatingResponseDto>.Fail("Customer not found");
+                return Response<AddRatingResponseDto>.Fail(InfoFile.notFound);
 
             var prevRate = _unitOfWork.Ratings.GetRatingByCustomerId(userId).FirstOrDefault();
             var responseRate = _mapper.Map<AddRatingResponseDto>(prevRate);
@@ -37,6 +38,7 @@ namespace HotelMgt.Core.Services.implementations
             {
                 prevRate.Ratings = ratingsDto.Ratings;
                 prevRate.Comment = ratingsDto.Comment;
+                prevRate.UpdatedAt = DateTime.UtcNow;
 
                 _unitOfWork.Ratings.UpdateRatingAsync(prevRate);
                 await _unitOfWork.CompleteAsync();
