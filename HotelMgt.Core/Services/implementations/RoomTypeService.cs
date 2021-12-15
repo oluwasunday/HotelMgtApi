@@ -77,6 +77,7 @@ namespace HotelMgt.Core.Services.implementations
             roomType.Description = roomTypeDto.Description;
             roomType.Discount = roomTypeDto.Discount;
             roomType.Price = roomTypeDto.Price;
+            roomType.Thumbnail = roomType.Thumbnail;
             roomType.UpdatedAt = DateTime.UtcNow;
 
             _unitOfWork.RoomTypes.UpdateRoomType(roomType);
